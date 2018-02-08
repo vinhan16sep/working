@@ -125,6 +125,20 @@ class Information_model extends CI_Model {
         return false;
     }
 
+    public function fetch_user_by_id($id){
+        $query = $this->db->select('*')
+            ->from('users')
+            ->where('id', $id)
+            ->limit(1)
+            ->get();
+
+        if($query->num_rows() == 1){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
     public function fetch_by_user_id($type, $id){
         $query = $this->db->select('*')
             ->from($type)
@@ -253,5 +267,14 @@ class Information_model extends CI_Model {
         $this->db->where('company.client_id', $id);
         $this->db->where('company.is_submit', 1);
         return $result = $this->db->get()->row_array();
+    }
+
+    public function get_all_for_export(){
+        $this->db->select('*');
+        $this->db->from('company');
+        $this->db->where('is_submit', 1);
+        $this->db->order_by("id", "asc");
+
+        return $result = $this->db->get()->result_array();
     }
 }

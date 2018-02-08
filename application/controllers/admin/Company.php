@@ -1,12 +1,17 @@
 <?php
-/**
-* 
-*/
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require_once APPPATH."/third_party/PHPExcel.php";
+
 class Company extends Admin_Controller{
+
+    private $excel = null;
 	
 	function __construct(){
 		parent::__construct();
 		$this->load->model('information_model');
+
+        $this->excel = new PHPExcel();
 	}
 
 	public function index(){
@@ -40,5 +45,75 @@ class Company extends Admin_Controller{
         $company = $this->information_model->fetch_company_by_client_id($client_id);
         $this->data['company'] = $company;
         $this->render('admin/company/detail_company_view');
+    }
+
+    public function export(){
+        //activate worksheet number 1
+        $this->excel->setActiveSheetIndex(0);
+        //name the worksheet
+        $this->excel->getActiveSheet()->setTitle('Danh sach doanh nghiep');
+
+        // load database
+        $this->load->database();
+
+        // get all users in array formate
+        $data = $this->information_model->get_all_for_export();
+        $data_export = array(
+            '0' => array(
+                'company' => 'Company',
+                'equity_2015' => 'Vốn điều lệ năm 2015 (triệu VND)',
+                'equity_2016' => 'Vốn điều lệ năm 2016 (triệu VND)',
+                'equity_2017' => 'Vốn điều lệ năm 2017 (triệu VND)',
+                'owner_equity' => 'Vốn chủ sở hữu (triệu VND)',
+                'total_income' => 'Tổng doanh thu DN',
+                'software_income' => 'Tổng DT lĩnh vực sx phần mềm (Triệu VND)',
+                'it_income' => 'Tổng doanh thu dịch vụ CNTT (triệu VND)',
+                'export_income' => 'Tổng DT xuất khẩu (USD)',
+                'total_labor' => 'Tổng số lao động của DN',
+                'total_ltv' => 'Tổng số LTV',
+                'description' => 'Giới thiệu chung',
+                'main_service' => 'SP dịch vụ chính của DN',
+                'main_market' => 'Thị trường chính'
+            )
+        );
+
+        foreach($data as $key => $company){
+            $client_info = $this->information_model->fetch_user_by_id($company['client_id']);
+            $data_export[$key + 1] = array(
+                'company' => $client_info['company'],
+                'equity_2015' => $company['equity_2015'],
+                'equity_2016' => $company['equity_2016'],
+                'equity_2017' => $company['equity_2017'],
+                'owner_equity' => $company['owner_equity'],
+                'total_income' => $company['total_income'],
+                'software_income' => $company['software_income'],
+                'it_income' => $company['it_income'],
+                'export_income' => $company['export_income'],
+                'total_labor' => $company['total_labor'],
+                'total_ltv' => $company['total_ltv'],
+                'description' => $company['description'],
+                'main_service' => $company['main_service'],
+                'main_market' => $company['main_market']
+            );
+        }
+
+        // read data to active sheet
+        $this->excel->getActiveSheet()->fromArray($data_export);
+
+        $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xls'; //save our workbook as this file name
+
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+
+        header('Cache-Control: max-age=0'); //no cache
+
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
     }
 }

@@ -269,9 +269,12 @@ class Information_model extends CI_Model {
         return $result = $this->db->get()->row_array();
     }
 
-    public function get_all_for_export(){
+    public function get_all_for_export($type, $client_id = null){
         $this->db->select('*');
-        $this->db->from('company');
+        $this->db->from($type);
+        if($client_id != null){
+            $this->db->where('client_id', $client_id);
+        }
         $this->db->where('is_submit', 1);
         $this->db->order_by("id", "asc");
 

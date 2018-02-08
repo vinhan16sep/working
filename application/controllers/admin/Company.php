@@ -57,10 +57,10 @@ class Company extends Admin_Controller{
         $this->load->database();
 
         // get all users in array formate
-        $data = $this->information_model->get_all_for_export();
+        $data = $this->information_model->get_all_for_export('company');
         $data_export = array(
             '0' => array(
-                'company' => 'Company',
+                'company' => 'Doanh nghiệp',
                 'phone' => 'Điện thoại',
                 'address' => 'Địa chỉ',
                 'website' => 'Website',

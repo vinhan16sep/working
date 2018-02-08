@@ -21,15 +21,12 @@
                             <h4>Tổng số người dùng đăng ký: <span style="color: red"><?php echo $total_users; ?></span></h4>
                                 <p style="color:green;">Người dùng đăng ký tài khoản</p>
                                 <span>
-                                    <a href="http://localhost/working/client/information/products" class="btn btn-success btn-block"><b>Xem danh sách người dùng đã đăng ký</b></a>
+                                    <a href="<?php echo base_url('admin/users/index/3') ?>" class="btn btn-success btn-block"><b>Xem danh sách người dùng đã đăng ký</b></a>
                                 </span>
                         </div>
                         <div class="post">
                             <h4>Tổng số sản phẩm đăng ký: <span style="color: red"><?php echo $total_products; ?></span></h4>
                                 <p style="color:green;">Doanh nghiệp đã đăng ký sản phẩm / giải pháp / dịch vụ.</p>
-                                <span>
-                                    <a href="http://localhost/working/client/information/products" class="btn btn-success btn-block"><b>Xem danh sách các sản phẩm đã đăng ký</b></a>
-                                </span>
                         </div>
                     </div>
                     <!-- /.tab-content -->

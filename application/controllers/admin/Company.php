@@ -61,6 +61,18 @@ class Company extends Admin_Controller{
         $data_export = array(
             '0' => array(
                 'company' => 'Company',
+                'phone' => 'Điện thoại',
+                'address' => 'Địa chỉ',
+                'website' => 'Website',
+                'legal_representative' => 'Tên người đại diện pháp luật',
+                'lp_position' => 'Chức danh',
+                'lp_email' => 'Email',
+                'lp_phone' => 'Di động',
+                'connector' => 'Tên người liên hệ với BTC',
+                'c_position' => 'Chức danh',
+                'c_email' => 'Email',
+                'c_phone' => 'Di động',
+                'link' => 'Link download PĐK của DN',
                 'equity_2015' => 'Vốn điều lệ năm 2015 (triệu VND)',
                 'equity_2016' => 'Vốn điều lệ năm 2016 (triệu VND)',
                 'equity_2017' => 'Vốn điều lệ năm 2017 (triệu VND)',
@@ -78,9 +90,21 @@ class Company extends Admin_Controller{
         );
 
         foreach($data as $key => $company){
-            $client_info = $this->information_model->fetch_user_by_id($company['client_id']);
+            $extra_info = $this->information_model->fetch_company_by_id($company['id']);
             $data_export[$key + 1] = array(
-                'company' => $client_info['company'],
+                'company' => $extra_info['company'],
+                'phone' => $extra_info['phone'],
+                'address' => $extra_info['address'],
+                'website' => $extra_info['website'],
+                'legal_representative' => $extra_info['legal_representative'],
+                'lp_position' => $extra_info['lp_position'],
+                'lp_email' => $extra_info['lp_email'],
+                'lp_phone' => $extra_info['lp_phone'],
+                'connector' => $extra_info['connector'],
+                'c_position' => $extra_info['c_position'],
+                'c_email' => $extra_info['c_email'],
+                'c_phone' => $extra_info['c_phone'],
+                'link' => $extra_info['link'],
                 'equity_2015' => $company['equity_2015'],
                 'equity_2016' => $company['equity_2016'],
                 'equity_2017' => $company['equity_2017'],

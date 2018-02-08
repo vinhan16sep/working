@@ -80,7 +80,7 @@ class Admin_Controller extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        if (!$this->ion_auth->logged_in()) {
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group('admin')) {
             //redirect them to the login page
             redirect('admin/user/login', 'refresh');
         }
@@ -104,6 +104,117 @@ class Admin_Controller extends MY_Controller {
 
 
     protected function render($the_view = NULL, $template = 'admin_master') {
+        parent::render($the_view, $template);
+    }
+
+    protected function upload_image($image_input_id, $image_name, $upload_path, $upload_thumb_path = '', $thumbs_with = 75, $thumbs_height = 50) {
+        $image = '';
+        if (!empty($image_name)) {
+            $config['upload_path'] = $upload_path;
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['file_name'] = $image_name;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload($image_input_id)) {
+                $upload_data = $this->upload->data();
+                $image = $upload_data['file_name'];
+
+                $config_thumb['source_image'] = $upload_path . '/' . $image;
+                $config_thumb['create_thumb'] = TRUE;
+                $config_thumb['maintain_ratio'] = TRUE;
+                $config_thumb['new_image'] = $upload_thumb_path;
+                $config_thumb['width'] = $thumbs_with;
+                $config_thumb['height'] = $thumbs_height;
+
+                $this->load->library('image_lib', $config_thumb);
+
+                $this->image_lib->resize();
+            }
+        }
+
+        return $image;
+    }
+
+    function upload_file($upload_path = '', $file_name = '')
+    {
+        //lay thong tin cau hinh upload
+        $config = $this->config($upload_path);
+
+        //lưu biến môi trường khi thực hiện upload
+        $file  = $_FILES[$file_name];
+        $count = count($file['name']);//lấy tổng số file được upload
+
+        $image_list = array(); //luu ten cac file anh upload thanh cong
+        for($i=0; $i<=$count-1; $i++) {
+
+            $_FILES['userfile']['name']     = $file['name'][$i];  //khai báo tên của file thứ i
+            $_FILES['userfile']['type']     = $file['type'][$i]; //khai báo kiểu của file thứ i
+            $_FILES['userfile']['tmp_name'] = $file['tmp_name'][$i]; //khai báo đường dẫn tạm của file thứ i
+            $_FILES['userfile']['error']    = $file['error'][$i]; //khai báo lỗi của file thứ i
+            $_FILES['userfile']['size']     = $file['size'][$i]; //khai báo kích cỡ của file thứ i
+            //load thư viện upload và cấu hình
+            $this->load->library('upload', $config);
+            //thực hiện upload từng file
+            if($this->upload->do_upload())
+            {
+                //nếu upload thành công thì lưu toàn bộ dữ liệu
+                $data = $this->upload->data();
+                //in cấu trúc dữ liệu của các file
+                $image_list[] = $data['file_name'];
+            }
+        }
+        return $image_list;
+    }
+
+    function config($upload_path = '')
+    {
+        //Khai bao bien cau hinh
+        $config = array();
+        //thuc mục chứa file
+        $config['upload_path']   = $upload_path;
+        //Định dạng file được phép tải
+        $config['allowed_types'] = 'jpg|png|gif';
+        //Dung lượng tối đa
+        $config['max_size']      = '1024';
+//        //Chiều rộng tối đa
+//        $config['max_width']     = '1028';
+//        //Chiều cao tối đa
+//        $config['max_height']    = '1028';
+
+        return $config;
+    }
+}
+
+class Member_Controller extends MY_Controller {
+
+    function __construct() {
+        parent::__construct();
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group('members')) {
+            //redirect them to the login page
+            redirect('member/user/login', 'refresh');
+        }
+        $this->data['user_email'] = $this->ion_auth->user()->row()->username;
+        $this->data['page_title'] = 'Member area';
+
+        // Get current class
+        //$class = $this->router->fetch_class();
+        // Set timezone
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+        // Insert author informations to database when insert, update or delete
+        $this->author_info = array(
+            'created_at' => date('Y-m-d H:i:s', now()),
+            'created_by' => $this->ion_auth->user()->row()->username,
+            'modified_at' => date('Y-m-d H:i:s', now()),
+            'modified_by' => $this->ion_auth->user()->row()->username
+        );
+    }
+
+
+
+    protected function render($the_view = NULL, $template = 'member_master') {
         parent::render($the_view, $template);
     }
 

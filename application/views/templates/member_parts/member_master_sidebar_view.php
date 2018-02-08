@@ -23,7 +23,7 @@
 
                 <li class="header">MENU</li>
                 <li class="<?php echo ($active == 'dashboard')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/dashboard'); ?>">
+                    <a href="<?php echo base_url('member/dashboard'); ?>">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span>Tổng quan</span>
                         <span class="pull-right-container"></span>

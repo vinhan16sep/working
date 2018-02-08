@@ -1,8 +1,9 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
-        <h3>Danh sách doanh nghiệp</h3>
+        <h3>Danh sách doanh nghiệp</h3><a type="button" href="<?php echo site_url('admin/company/export'); ?>" class="btn btn-success">EXPORT DATA</a>
     </div>
+
     <section class="content">
 
         <div class="row">

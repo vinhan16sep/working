@@ -10,16 +10,16 @@
                             <h4>Tài khoản</h4>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item" style="height: 80px !important;">
-                                    <b style="height: 80px !important;"><i class="fa fa-building-o margin-r-5"></i> Doanh nghiệp</b> <a class="pull-right"><?php echo $user->company; ?></a>
+                                    <a><i class="fa fa-building-o margin-r-5"></i> Doanh nghiệp</a> <p class="pull-right"><?php echo $user->company; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-envelope margin-r-5"></i> Email</b> <a class="pull-right"><?php echo $user->email; ?></a>
+                                    <a><i class="fa fa-envelope margin-r-5"></i> Email</a> <p class="pull-right"><?php echo $user->email; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-phone margin-r-5"></i> Điện thoại</b> <a class="pull-right"><?php echo $user->phone; ?></a>
+                                    <a><i class="fa fa-phone margin-r-5"></i> Điện thoại</a> <p class="pull-right"><?php echo $user->phone; ?></p>
                                 </li>
                                 <li class="list-group-item" style="height: 80px !important;">
-                                    <b style="height: 80px !important;"><i class="fa fa-map-marker margin-r-5"></i> Địa chỉ</b> <a class="pull-right"><?php echo $user->address; ?></a>
+                                    <a><i class="fa fa-map-marker margin-r-5"></i> Địa chỉ</a> <p class="pull-right"><?php echo $user->address; ?></p>
                                 </li>
                             </ul>
                         </div>
@@ -35,34 +35,34 @@
                             <h4>Thông tin khác</h4>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b style="height: 80px !important;"><i class="fa fa-globe margin-r-5"></i> Website</b> <a class="pull-right"><?php echo $submitted['website']; ?></a>
+                                    <a><i class="fa fa-globe margin-r-5"></i> Website</a> <p class="pull-right"><?php echo $submitted['website']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-user margin-r-5"></i> Tên người đại diện pháp luật</b> <a class="pull-right"><?php echo $submitted['legal_representative']; ?></a>
+                                    <a><i class="fa fa-user margin-r-5"></i> Tên người đại diện pháp luật</a> <p class="pull-right"><?php echo $submitted['legal_representative']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-star margin-r-5"></i> Chức danh</b> <a class="pull-right"><?php echo $submitted['lp_position']; ?></a>
+                                    <a><i class="fa fa-star margin-r-5"></i> Chức danh</a> <p class="pull-right"><?php echo $submitted['lp_position']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-envelope margin-r-5"></i> Email</b> <a class="pull-right"><?php echo $submitted['lp_email']; ?></a>
+                                    <a><i class="fa fa-envelope margin-r-5"></i> Email</a> <p class="pull-right"><?php echo $submitted['lp_email']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-mobile margin-r-5"></i> Di động</b> <a class="pull-right"><?php echo $submitted['lp_phone']; ?></a>
+                                    <a><i class="fa fa-mobile margin-r-5"></i> Di động</a> <p class="pull-right"><?php echo $submitted['lp_phone']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-user margin-r-5"></i> Tên người liên hệ với BTC</b> <a class="pull-right"><?php echo $submitted['connector']; ?></a>
+                                    <a><i class="fa fa-user margin-r-5"></i> Tên người liên hệ với BTC</a> <p class="pull-right"><?php echo $submitted['connector']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-star margin-r-5"></i> Chức danh</b> <a class="pull-right"><?php echo $submitted['c_position']; ?></a>
+                                    <a><i class="fa fa-star margin-r-5"></i> Chức danh</a> <p class="pull-right"><?php echo $submitted['c_position']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-envelope margin-r-5"></i> Email</b> <a class="pull-right"><?php echo $submitted['c_email']; ?></a>
+                                    <a><i class="fa fa-envelope margin-r-5"></i> Email</a> <p class="pull-right"><?php echo $submitted['c_email']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-mobile margin-r-5"></i> Di động</b> <a class="pull-right"><?php echo $submitted['c_phone']; ?></a>
+                                    <a><i class="fa fa-mobile margin-r-5"></i> Di động</a> <p class="pull-right"><?php echo $submitted['c_phone']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <b><i class="fa fa-link margin-r-5"></i> Link download PĐK của DN</b> <a class="pull-right"><?php echo $submitted['link']; ?></a>
+                                    <a><i class="fa fa-link margin-r-5"></i> Link download PĐK của DN</a> <p class="pull-right"><?php echo $submitted['link']; ?></p>
                                 </li>
                             </ul>
                             <?php if(!$submitted || $submitted['is_submit'] != 1): ?>

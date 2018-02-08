@@ -77,6 +77,30 @@ class Information_model extends CI_Model {
         return $query->num_rows();
     }
 
+    public function count_informations() {
+        $query = $this->db->select('*')
+            ->from('information')
+            ->get();
+
+        return $query->num_rows();
+    }
+
+    public function count_companys() {
+        $query = $this->db->select('*')
+            ->from('company')
+            ->get();
+
+        return $query->num_rows();
+    }
+
+    public function count_all_product() {
+        $query = $this->db->select('*')
+            ->from('product')
+            ->get();
+
+        return $query->num_rows();
+    }
+
     public function count_product($id) {
         $query = $this->db->select('*')
             ->from('product')
@@ -185,5 +209,25 @@ class Information_model extends CI_Model {
         }
 
         return false;
+    }
+
+    public function fetch_all_company_pagination($limit = NULL, $start = NULL) {
+        $this->db->select('company.*, users.company as company');
+        $this->db->from('company');
+        $this->db->join('users', 'users.id = company.client_id');
+        $this->db->limit($limit, $start);
+        $this->db->order_by("company.id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    public function fetch_company_by_id($id){
+        $this->db->select('company.*, users.*, information.*');
+        $this->db->from('company');
+        $this->db->join('users', 'users.id = company.client_id');
+        $this->db->join('information', 'information.client_id = company.client_id');
+        $this->db->where('company.id', $id);
+        $this->db->where('company.is_submit', 1);
+        return $result = $this->db->get()->row_array();
     }
 }

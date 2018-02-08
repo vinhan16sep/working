@@ -269,7 +269,36 @@ class Information_model extends CI_Model {
         return $result = $this->db->get()->row_array();
     }
 
-    public function get_all_for_export($type, $client_id = null){
+    public function count_company_search($search = '') {
+        $query = $this->db->select('company.*, users.*')
+            ->from('company')
+            ->join('users', 'users.id = company.client_id')
+            ->like('users.company', $search)
+            ->get();
+
+        return $query->num_rows();
+    }
+
+    public function fetch_all_company_pagination_search($limit = NULL, $start = NULL, $search = '') {
+        $this->db->select('company.*, users.company as company');
+        $this->db->from('company');
+        $this->db->join('users', 'users.id = company.client_id');
+        $this->db->limit($limit, $start);
+        $this->db->like('users.company', $search);
+        $this->db->order_by("company.id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    public function fetch_client_id($id = null){
+        $this->db->select('*');
+        $this->db->from('company');
+        $this->db->where('client_id', $id);
+        $this->db->where('is_submit', 1);
+        return $result = $this->db->get()->row_array();
+    }
+      
+      public function get_all_for_export($type, $client_id = null){
         $this->db->select('*');
         $this->db->from($type);
         if($client_id != null){

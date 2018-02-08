@@ -16,8 +16,18 @@ class Users extends Admin_Controller
     }
 
     public function index($group_id = null){
+        $this->load->model('information_model');
+        $this->load->model('users_model');
         $this->data['page_title'] = 'Quản lý user';
-        $this->data['users'] = $this->ion_auth->users($group_id)->result();
+        $users = $this->ion_auth->users($group_id)->result_array();
+        if ($group_id == 3) {
+            foreach ($users as $key => $value) {
+                $company = $this->information_model->fetch_client_id($value['id']);
+                $users[$key]['member_id'] = $company['member_id'];
+            }
+        }
+        $this->data['users'] = $users;
+        // print_r($this->data['users']);die;
         $this->render('admin/users/list_users_view');
     }
 
@@ -188,5 +198,14 @@ class Users extends Admin_Controller
         $message = 'Test body';
 
         return $message;
+    }
+
+    public function list_client($id){
+        $this->load->model('users_model');
+        $this->data['page_title'] = 'Quản lý user';
+        $this->data['users'] = $this->users_model->fetch_all_client($id);;
+        // print_r($this->data['users']);die;
+        // print_r($group_id);die;
+        $this->render('admin/users/list_users_view');
     }
 }

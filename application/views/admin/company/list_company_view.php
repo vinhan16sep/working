@@ -6,6 +6,10 @@
     <section class="content">
 
         <div class="row">
+            <form action="<?php echo base_url('admin/company/index/') ?>" class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="get" style="margin-bottom: 30px;">
+                <input type="text" name="search" value="<?php echo ($keywords != '')? $keywords : '' ?>" placeholder="Tìm Kiếm Danh Mục..." class="form-control" style=" width: 40%; float: left;margin-right: 5px;">
+                <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: left">
+            </form>
             <!-- /.col -->
             <div class="col-md-12">
                 <div class="nav-tabs-custom">
@@ -16,14 +20,26 @@
                             <table class="table">
                                 <th>STT</th>
                                 <th>Tên Doanh Nghiệp</th>
+                                <th>Người quản lý</th>
                                 <th style="text-align: center;">Thao Tác</th>
                                 <?php foreach ($companies as $key => $value): ?>
                                     <tr>
                                         <td><?php echo $stt++ ?></td>
                                         <td><?php echo $value['company'] ?></td>
+                                        <td data-company="<?php echo $value['id'] ?>">
+                                            <select class="btn btn-info change-member">
+                                                <option>Chọn thành viên hội đồng</option>
+                                                <?php foreach ($members as $k => $val): ?>
+                                                    <option value="<?php echo $val['id'] ?>" <?php echo ($value['member_id'] == $val['id'])? 'selected' : '' ?> ><?php echo $val['first_name'].' '.$val['last_name'] ?> (<?php echo $val['username'] ?>)</option>
+                                                    
+                                                <?php endforeach ?>
+                                            </select>
+                                        </td>
                                         <td style="text-align: center;">
                                             <a href="<?php echo base_url('admin/company/detail/' . $value['id']) ?>" class="btn btn-info">Xem chi tiết</a>
                                             <a href="<?php echo base_url('admin/product/index/' . $value['client_id']) ?>" class="btn btn-info">Sản phẩm</a>
+                                            
+                                            
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -46,4 +62,26 @@
 
     </section>
 </div>
+<script type="text/javascript">
+    var url = location.protocol + "//" + location.host + (location.port ? ':' + location.port : '');
+    $('.change-member').change(function(){
+        var member_id = $(this).val();
+        var company_id = $(this).parent('td').data('company');
+        if(confirm('Chắc chắn đổi viên hội đồng?')){
+            jQuery.ajax({
+                method: "get",
+                url: url + '/working/admin/company/change_member',
+                // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+                data: {member_id : member_id, company_id : company_id},
+                success: function(result){
+                    // if(JSON.parse(result).isExists == false){
+                    //     alert('Vui lòng xóa bài viết trong danh mục này trước');
+                    // }else{
+                    //     $(check).parents('tr').fadeOut();
+                    // }
+                }
+            });
+        };
+    });
+</script>
 

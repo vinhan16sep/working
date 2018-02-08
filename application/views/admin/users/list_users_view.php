@@ -22,24 +22,38 @@
 
                             <?php foreach ($users as $user): ?>
 
-                                <tr class="row_<?php echo $user->id; ?>">
-                                    <td><?php echo $user->username; ?></td>
-                                    <td><?php echo $user->first_name . ' ' . $user->last_name; ?></td>
-                                    <td><a href="<?php echo base_url('admin/company/detail_by_client/' . $user->id) ?>"><?php echo $user->company; ?></a></td>
-                                    <td><?php echo $user->phone; ?></td>
-                                    <td><?php echo $user->email; ?></td>
+                                <tr class="row_<?php echo $user['id']; ?>">
+                                    <td><?php echo $user['username']; ?></td>
+                                    <td><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></td>
+                                    <td><a href="<?php echo base_url('admin/company/detail_by_client/' . $user['id']) ?>"><?php echo $user['company']; ?></a></td>
+                                    <td><?php echo $user['phone']; ?></td>
+                                    <td><?php echo $user['email']; ?></td>
                                     <td>
                                         <form class="form_ajax">
-                                            <a href="<?php echo base_url('admin/users/edit/' . $user->id); ?>" title="Chỉnh sửa">
+                                            <?php if ($this->uri->segment(4) == 2): ?>
+                                                <a href="<?php echo base_url('admin/users/list_client/' . $user['id']); ?>" title="Danh sách">
+                                                    <i class="fa fa-list"></i>
+                                                </a>
+                                                &nbsp&nbsp
+                                            <?php endif ?>
+
+                                            <?php if ($this->uri->segment(4) == 3 && $user['member_id'] != null): ?>
+                                                <a href="<?php echo base_url('admin/users/edit/' . $user['member_id']); ?>" title="Người quản lý">
+                                                    <i class="fa fa-user"></i>
+                                                </a>
+                                                &nbsp&nbsp&nbsp&nbsp
+                                            <?php endif ?>
+                                            
+                                            <a href="<?php echo base_url('admin/users/edit/' . $user['id']); ?>" title="Chỉnh sửa">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>
                                             &nbsp&nbsp
-                                            <a href="javascript:void(0);" onclick="deleteItem(<?php echo $user->id; ?>, '<?php echo base_url('admin/users/delete'); ?>')" >
+                                            <a href="javascript:void(0);" onclick="deleteItem(<?php echo $user['id']; ?>, '<?php echo base_url('admin/users/delete'); ?>')" >
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
                                             &nbsp&nbsp
-                                            <?php if($user->active == 0): ?>
-                                            <a href="javascript:void(0);" onclick="activeItem(<?php echo $user->id; ?>, '<?php echo base_url('admin/users/active'); ?>')" >
+                                            <?php if($user['active'] == 0): ?>
+                                            <a href="javascript:void(0);" onclick="activeItem(<?php echo $user['id']; ?>, '<?php echo base_url('admin/users/active'); ?>')" >
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                             <?php endif; ?>

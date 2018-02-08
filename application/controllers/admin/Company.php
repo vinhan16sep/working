@@ -25,8 +25,7 @@ class Company extends Admin_Controller{
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $result = $this->information_model->fetch_all_company_pagination($per_page, $this->data['page']);
-        $this->data['companys'] = $result;
-        // print_r($result);die;
+        $this->data['companies'] = $result;
 
 		$this->render('admin/company/list_company_view');
 	}
@@ -34,7 +33,12 @@ class Company extends Admin_Controller{
 	public function detail($id){
 		$company = $this->information_model->fetch_company_by_id($id);
 		$this->data['company'] = $company;
-		// print_r($company);die;
 		$this->render('admin/company/detail_company_view');
 	}
+
+    public function detail_by_client($client_id){
+        $company = $this->information_model->fetch_company_by_client_id($client_id);
+        $this->data['company'] = $company;
+        $this->render('admin/company/detail_company_view');
+    }
 }

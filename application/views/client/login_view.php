@@ -26,6 +26,7 @@
         </div>
 
         <div class="col-sm-6 col-md-6 col-xs-12">
+            <h4 style="color:red;"><?php echo $this->session->flashdata('register_success'); ?></h4>
             <div class="col-lg-8 col-lg-offset-2">
                 <h1>Or client register</h1>
                 <?php echo $this->session->flashdata('message'); ?>

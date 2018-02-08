@@ -14,7 +14,7 @@
                             <tr>
                                 <td><b><a href="#">Username</a></b></td>
                                 <td><b><a href="#">Họ tên</a></b></td>
-                                <td><b><a href="#">Công ty / Nơi làm việc</a></b></td>
+                                <td><b><a href="#">Doanh nghiệp</a></b></td>
                                 <td><b><a href="#">Điện thoại</a></b></td>
                                 <td><b><a href="#">Email</a></b></td>
                                 <td><b>Quản lý</b></td>
@@ -25,7 +25,7 @@
                                 <tr class="row_<?php echo $user->id; ?>">
                                     <td><?php echo $user->username; ?></td>
                                     <td><?php echo $user->first_name . ' ' . $user->last_name; ?></td>
-                                    <td><?php echo $user->company; ?></td>
+                                    <td><a href="<?php echo base_url('admin/company/detail_by_client/' . $user->id) ?>"><?php echo $user->company; ?></a></td>
                                     <td><?php echo $user->phone; ?></td>
                                     <td><?php echo $user->email; ?></td>
                                     <td>
@@ -37,6 +37,12 @@
                                             <a href="javascript:void(0);" onclick="deleteItem(<?php echo $user->id; ?>, '<?php echo base_url('admin/users/delete'); ?>')" >
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
+                                            &nbsp&nbsp
+                                            <?php if($user->active == 0): ?>
+                                            <a href="javascript:void(0);" onclick="activeItem(<?php echo $user->id; ?>, '<?php echo base_url('admin/users/active'); ?>')" >
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </a>
+                                            <?php endif; ?>
                                         </form>
                                     </td>
                                 </tr>

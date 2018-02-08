@@ -142,8 +142,22 @@ class Information_model extends CI_Model {
     public function fetch_product_by_user_and_id($type, $user_id, $id){
         $query = $this->db->select('*')
             ->from($type)
-            ->where('id', $id)
             ->where('client_id', $user_id)
+            ->where('id', $id)
+            ->limit(1)
+            ->get();
+
+        if($query->num_rows() == 1){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
+    public function fetch_product_by_id($type, $id){
+        $query = $this->db->select('*')
+            ->from($type)
+            ->where('id', $id)
             ->limit(1)
             ->get();
 
@@ -221,12 +235,22 @@ class Information_model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function fetch_company_by_id($id){
+    public function fetch_company_by_id($id = null){
         $this->db->select('company.*, users.*, information.*');
         $this->db->from('company');
         $this->db->join('users', 'users.id = company.client_id');
         $this->db->join('information', 'information.client_id = company.client_id');
         $this->db->where('company.id', $id);
+        $this->db->where('company.is_submit', 1);
+        return $result = $this->db->get()->row_array();
+    }
+
+    public function fetch_company_by_client_id($id = null){
+        $this->db->select('company.*, users.*, information.*');
+        $this->db->from('company');
+        $this->db->join('users', 'users.id = company.client_id');
+        $this->db->join('information', 'information.client_id = company.client_id');
+        $this->db->where('company.client_id', $id);
         $this->db->where('company.is_submit', 1);
         return $result = $this->db->get()->row_array();
     }

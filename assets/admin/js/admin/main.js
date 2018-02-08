@@ -329,7 +329,29 @@ function deleteItem(id, url){
      }
 }
 
+ function activeItem(id, url){
+     if(confirm('Chắc chắn kích hoạt người dùng này?')){
+         $.ajax({
+             url: url,
+             method: 'get',
+             dataType: 'json',
+             data: {
+                 id: id
+             },
+             success: function(res){
+                 if(res.message == 'Success'){
+                     alert('Kích hoạt thành công');
+                     location.reload();
+                 }else{
+                     alert('Kích hoạt thất bại');
+                 }
+             },
+             error: function(){
 
+             }
+         });
+     }
+ }
 
 
 

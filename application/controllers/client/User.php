@@ -73,6 +73,8 @@ class User extends MY_Controller {
             $result = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
 
             if($result){
+                $this->session->set_flashdata('register_success', 'Tài khoản đã được tạo thành công, chúng tôi sẽ gửi mail thông báo khi kích hoạt hoàn thành.');
+                redirect('client/user/login', 'refresh');
                 $this->ion_auth->login($username, $password, false);
                 redirect('client', 'refresh');
             }

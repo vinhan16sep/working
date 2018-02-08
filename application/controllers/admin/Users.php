@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+include "class.phpmailer.php";
+include "class.smtp.php";
+
 class Users extends Admin_Controller
 {
     function __construct(){
@@ -129,5 +132,61 @@ class Users extends Admin_Controller
                     ->set_output(json_encode(array('message' => 'Success', 'data' => $id)));
             }
         }
+    }
+
+    public function active(){
+        $id = $this->input->get('id');
+        if(is_null($id)){
+            $this->session->set_flashdata('message','There\'s no user to active');
+        } else {
+            $user = $this->ion_auth->user((int) $id)->row();
+            $result = $this->ion_auth->set_active($id);
+            $this->session->set_flashdata('message',$this->ion_auth->messages());
+
+            if($result == false){
+                $this->output->set_status_header(404)
+                    ->set_output(json_encode(array('message' => 'Fail', 'data' => $id)));
+            }else{
+                $this->send_mail($user->email);
+                $this->output->set_status_header(200)
+                    ->set_output(json_encode(array('message' => 'Success', 'data' => $id)));
+            }
+        }
+    }
+
+    public function send_mail($email) {
+        $mail = new PHPMailer();
+        $mail->IsSMTP(); // set mailer to use SMTP
+        $mail->Host = "smtp.gmail.com"; // specify main and backup server
+        $mail->Port = 465; // set the port to use
+        $mail->SMTPAuth = true; // turn on SMTP authentication
+        $mail->SMTPSecure = 'ssl';
+        $mail->Username = "nghemalao@gmail.com"; // your SMTP username or your gmail username
+        $mail->Password = "Huongdan1"; // your SMTP password or your gmail password
+        $from = "nghemalao@gmail.com"; // Reply to this email
+        $to = $email; // Recipients email ID
+        $name = 'WEBMAIL'; // Recipient's name
+        $mail->From = $from;
+        $mail->FromName = $name; // Name to indicate where the email came from when the recepient received
+        $mail->AddAddress($to, $name);
+        $mail->CharSet = 'UTF-8';
+        $mail->WordWrap = 50; // set word wrap
+        $mail->IsHTML(true); // send as HTML
+        $mail->Subject = "Mail từ " . strip_tags($email);
+
+        $mail->Body = $this->email_template($email); //HTML Body
+
+        if(!$mail->Send()){
+            $this->output->set_status_header(200)->set_output(json_encode(array('mail_send' => 'Fail')));
+        } else {
+            $this->output->set_status_header(200)->set_output(json_encode(array('mail_send' => 'Success')));
+        }
+
+    }
+
+    public function email_template($data){
+        $message = 'Test body';
+
+        return $message;
     }
 }

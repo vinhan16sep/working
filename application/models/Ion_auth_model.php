@@ -250,6 +250,26 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('model_constructor');
 	}
 
+	// ---------------------
+	// -- CUSTOM FUNCTION --
+    // ---------------------
+    public function set_active($id){
+        $this->db->set('active', 1)
+            ->where('id', $id)
+            ->update('users');
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
+
+    // ---------------------
+    // -- END CUSTOM FUNCTION --
+    // ---------------------
+
+
 	/**
 	 * Misc functions
 	 *

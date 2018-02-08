@@ -1,7 +1,7 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
-        <h3>Danh sách doanh nghiệp</h3>
+        <h3>Danh sách sản phẩm <span style="color:red;"><?php echo $client->company; ?></span></h3>
     </div>
     <section class="content">
 
@@ -10,21 +10,20 @@
             <div class="col-md-12">
                 <div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <?php if ($companies): ?>
+                        <?php if ($products): ?>
                         <?php $stt = 1; ?>
                         <div class="post">
                             <table class="table">
                                 <th>STT</th>
-                                <th>Tên Doanh Nghiệp</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Lĩnh vực</th>
                                 <th style="text-align: center;">Thao Tác</th>
-                                <?php foreach ($companies as $key => $value): ?>
+                                <?php foreach ($products as $key => $value): ?>
                                     <tr>
                                         <td><?php echo $stt++ ?></td>
-                                        <td><?php echo $value['company'] ?></td>
-                                        <td style="text-align: center;">
-                                            <a href="<?php echo base_url('admin/company/detail/' . $value['id']) ?>" class="btn btn-info">Xem chi tiết</a>
-                                            <a href="<?php echo base_url('admin/product/index/' . $value['client_id']) ?>" class="btn btn-info">Sản phẩm</a>
-                                        </td>
+                                        <td><?php echo $value['name'] ?></td>
+                                        <td><?php echo $value['service'] ?></td>
+                                        <td style="text-align: center;"><a href="<?php echo base_url('admin/product/detail/' . $value['id']) ?>" class="btn btn-info">Xem chi tiết</a></td>
                                     </tr>
                                 <?php endforeach ?>
                             </table>

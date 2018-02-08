@@ -1,7 +1,7 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
-        <h3>Thông tin doanh nghiệp</h3>
+        <h3>Thông tin doanh nghiệp: <span style="color:red;"><?php echo $company['company']; ?></span></h3>
     </div>
     <section class="content">
 

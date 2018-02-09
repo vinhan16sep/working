@@ -27,7 +27,6 @@ class Users extends Admin_Controller
             }
         }
         $this->data['users'] = $users;
-        // print_r($this->data['users']);die;
         $this->render('admin/users/list_users_view');
     }
 
@@ -203,9 +202,7 @@ class Users extends Admin_Controller
     public function list_client($id){
         $this->load->model('users_model');
         $this->data['page_title'] = 'Quản lý user';
-        $this->data['users'] = $this->users_model->fetch_all_client($id);;
-        // print_r($this->data['users']);die;
-        // print_r($group_id);die;
-        $this->render('admin/users/list_users_view');
+        $this->data['users'] = $this->users_model->fetch_all_client($id);
+        $this->render('admin/users/list_client_of_member_view');
     }
 }

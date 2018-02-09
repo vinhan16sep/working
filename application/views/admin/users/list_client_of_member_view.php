@@ -17,11 +17,6 @@
                                 <td><b><a href="#">Doanh nghiệp</a></b></td>
                                 <td><b><a href="#">Điện thoại</a></b></td>
                                 <td><b><a href="#">Email</a></b></td>
-                                <?php if ($this->uri->segment(4) == 2): ?>
-                                <td><b><a href="#">DN được chỉ định</a></b></td>
-                                <?php elseif($this->uri->segment(4) == 3): ?>
-                                <td><b><a href="#">Người quản lý</a></b></td>
-                                <?php endif ?>
                                 <td><b>Thao tác</b></td>
                             </tr>
 
@@ -33,17 +28,6 @@
                                     <td><a href="<?php echo base_url('admin/company/detail_by_client/' . $user['id']) ?>"><?php echo $user['company']; ?></a></td>
                                     <td><?php echo $user['phone']; ?></td>
                                     <td><?php echo $user['email']; ?></td>
-                                    <td>
-                                        <?php if ($this->uri->segment(4) == 2): ?>
-                                        <a href="<?php echo base_url('admin/users/list_client/' . $user['id']); ?>" title="Danh sách">
-                                            Xem danh sách
-                                        </a>
-                                        <?php elseif($this->uri->segment(4) == 3 && $user['member_id'] != null): ?>
-                                        <a href="<?php echo base_url('admin/users/edit/' . $user['member_id']); ?>" title="Người quản lý">
-                                            Xem thông tin
-                                        </a>
-                                        <?php endif ?>
-                                    </td>
                                     <td>
                                         <form class="form_ajax">
                                             <a href="<?php echo base_url('admin/users/edit/' . $user['id']); ?>" title="Chỉnh sửa">

@@ -5,7 +5,7 @@
         <div class="container col-md-12">
             <div class="modified-mode">
                 <div class="col-lg-10 col-lg-offset-0" style="margin-left: 15px;">
-                    <h1>TẠO MỚI USER</h1>
+                    <h1>CHỈNH SỬA USER</h1>
                     <?php
                     echo form_open_multipart('', array('class' => 'form-horizontal'));
                     ?>

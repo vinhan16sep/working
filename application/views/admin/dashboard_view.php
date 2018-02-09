@@ -25,8 +25,7 @@
                                 </span>
                         </div>
                         <div class="post">
-                            <h4>Tổng số sản phẩm đăng ký: <span style="color: red"><?php echo $total_products; ?></span></h4>
-                                <p style="color:green;">Doanh nghiệp đã đăng ký sản phẩm / giải pháp / dịch vụ.</p>
+                            <h4>Tổng số sản phẩm / giải pháp / dịch vụ đã đăng ký: <span style="color: red"><?php echo $total_products; ?></span></h4>
                         </div>
                     </div>
                     <!-- /.tab-content -->

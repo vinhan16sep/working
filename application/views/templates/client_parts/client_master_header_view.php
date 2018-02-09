@@ -149,8 +149,11 @@
 
               <!-- menu footer-->
               <li class="user-footer">
+                  <div class="pull-left">
+                      <a href="<?php echo site_url('client/user/change_password'); ?>" class="btn btn-default btn-flat">Đổi mật khẩu</a>
+                  </div>
                 <div class="pull-right">
-                  <a href="<?php echo site_url('client/user/logout'); ?>" class="btn btn-default btn-flat">sign out</a>
+                  <a href="<?php echo site_url('client/user/logout'); ?>" class="btn btn-default btn-flat">Thoát</a>
                 </div>
               </li>
             </ul>

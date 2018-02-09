@@ -6,7 +6,7 @@
                 <?php echo $this->session->flashdata('login_message'); ?>
                 <?php echo form_open('client/user/login', array('class' => 'form-horizontal')); ?>
                 <div class="form-group">
-                    <?php echo form_label('Email', 'identity'); ?>
+                    <?php echo form_label('Tài khoản', 'identity'); ?>
                     <?php echo form_error('identity'); ?>
                     <?php echo form_input('identity', '', 'class="form-control"'); ?>
                 </div>

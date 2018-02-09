@@ -309,4 +309,36 @@ class Information_model extends CI_Model {
 
         return $result = $this->db->get()->result_array();
     }
+
+    public function fetch_company_by_member_id_pagination_search($member_id, $limit = NULL, $start = NULL, $search = '') {
+        $this->db->select('company.*, users.company as company');
+        $this->db->from('company');
+        $this->db->join('users', 'users.id = company.client_id');
+        $this->db->limit($limit, $start);
+        $this->db->like('users.company', $search);
+        $this->db->where('company.member_id', $member_id);
+        $this->db->order_by("company.id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    public function count_company_search_by_member_id($member_id, $search = '') {
+        $query = $this->db->select('company.*, users.*')
+            ->from('company')
+            ->join('users', 'users.id = company.client_id')
+            ->like('users.company', $search)
+            ->where('company.member_id', $member_id)
+            ->get();
+
+        return $query->num_rows();
+    }
+
+    public function count_company_by_member_id($member_id) {
+        $query = $this->db->select('*')
+            ->from('company')
+            ->where('member_id', $member_id)
+            ->get();
+
+        return $query->num_rows();
+    }
 }

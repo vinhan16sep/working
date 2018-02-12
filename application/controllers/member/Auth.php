@@ -104,7 +104,8 @@ class Auth extends CI_Controller {
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+//		redirect('auth/login', 'refresh');
+        redirect('member/user/login', 'refresh');
 	}
 
 	// change password
@@ -153,7 +154,7 @@ class Auth extends CI_Controller {
 			);
 
 			// render
-			$this->_render_page('auth/change_password', $this->data);
+			$this->_render_page('member/change_password', $this->data);
 		}
 		else
 		{
@@ -170,7 +171,7 @@ class Auth extends CI_Controller {
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/change_password', 'refresh');
+				redirect('member/auth/change_password', 'refresh');
 			}
 		}
 	}

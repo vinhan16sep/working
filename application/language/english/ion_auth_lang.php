@@ -61,10 +61,10 @@ $lang['group_name_required']                 = 'Group name is a required field';
 $lang['group_name_admin_not_alter']          = 'Admin group name can not be changed';
 
 // Activation Email
-$lang['email_activation_subject']            = 'Account Activation';
-$lang['email_activate_heading']              = 'Activate account for %s';
-$lang['email_activate_subheading']           = 'Please click this link to %s.';
-$lang['email_activate_link']                 = 'Activate Your Account';
+$lang['email_activation_subject']            = 'Kích hoạt tài khoản từ congdangky.danhhieusaokhue.vn';
+$lang['email_activate_heading']              = 'Kích hoạt tài khoản %s';
+$lang['email_activate_subheading']           = 'Vui lòng click vào link bên cạnh để %s.';
+$lang['email_activate_link']                 = 'Kích hoạt tài khoản';
 
 // Forgot Password Email
 $lang['email_forgotten_password_subject']    = 'Forgotten Password Verification';

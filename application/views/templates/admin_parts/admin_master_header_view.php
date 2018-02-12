@@ -79,7 +79,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php if ($this->ion_auth->logged_in()): ?>
+  <?php if ($this->ion_auth->logged_in() && $this->ion_auth->in_group('admin')): ?>
   <header class="main-header">
     <!-- logo -->
     <a href="<?php echo base_url('admin/dashboard') ?>" class="logo">
@@ -133,7 +133,7 @@
           <!-- user account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo site_url('assets/admin/'); ?>dist/img/user2-160x160.jpg" class="user-image" alt="user image">
+              <img src="<?php echo site_url('assets/public/img/client.jpg'); ?>" class="user-image" alt="user image">
               <span class="hidden-xs"><?php echo (isset($user_email))? $user_email : '' ?></span>
             </a>
             <ul class="dropdown-menu">
@@ -151,10 +151,10 @@
               <!-- menu footer-->
               <li class="user-footer">
               <div class="pull-left">
-                  <a href="<?php echo site_url('admin/auth/create_user'); ?>" class="btn btn-default btn-flat">Register</a>
+                  <a href="<?php echo site_url('admin/auth/create_user'); ?>" class="btn btn-default btn-flat">Tạo tài khoản mới</a>
               </div>
                 <div class="pull-right">
-                  <a href="<?php echo site_url('admin/user/logout'); ?>" class="btn btn-default btn-flat">sign out</a>
+                  <a href="<?php echo site_url('admin/user/logout'); ?>" class="btn btn-default btn-flat">Thoát</a>
                 </div>
               </li>
             </ul>

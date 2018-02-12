@@ -23,7 +23,17 @@
                                         <td><?php echo $stt++ ?></td>
                                         <td><?php echo $value['name'] ?></td>
                                         <td><?php echo $value['service'] ?></td>
-                                        <td style="text-align: center;"><a href="<?php echo base_url('admin/product/detail/' . $value['id']) ?>" class="btn btn-info">Xem chi tiết</a></td>
+                                        <?php if($value['rating'] == 0): ?>
+                                            <td style="text-align: center;"><a style="width:132px;" href="<?php echo base_url('admin/product/detail/' . $value['id']) ?>" class="btn btn-default">Chưa đánh giá</a></td>
+                                        <?php else: ?>
+                                            <?php if($value['rating'] == 1): ?>
+                                                <td style="text-align: center;"><a style="width:132px;" href="<?php echo base_url('admin/product/detail/' . $value['id']) ?>" class="btn btn-success">Đồng ý</a></td>
+                                            <?php elseif($value['rating'] == 2): ?>
+                                                <td style="text-align: center;"><a style="width:132px;" href="<?php echo base_url('admin/product/detail/' . $value['id']) ?>" class="btn btn-warning">Đề nghị xem xét</a></td>
+                                            <?php elseif($value['rating'] == 3): ?>
+                                                <td style="text-align: center;"><a style="width:132px;" href="<?php echo base_url('admin/product/detail/' . $value['id']) ?>" class="btn btn-danger">Không đồng ý</a></td>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </tr>
                                 <?php endforeach ?>
                             </table>

@@ -15,6 +15,10 @@ class User extends MY_Controller {
     }
 
     public function login() {
+        if ($this->ion_auth->logged_in() || $this->ion_auth->in_group('clients'))
+        {
+            redirect('client/dashboard', 'refresh');
+        }
         $this->data['page_title'] = 'Login';
         if ($this->input->post()) {
             $this->load->library('form_validation');
@@ -73,7 +77,7 @@ class User extends MY_Controller {
             $result = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
 
             if($result){
-                $this->session->set_flashdata('register_success', 'Tài khoản đã được tạo thành công, chúng tôi sẽ gửi mail thông báo khi kích hoạt hoàn thành.');
+                $this->session->set_flashdata('register_success', 'Vui lòng kích hoạt tài khoản theo hướng dẫn được gửi về email bạn vừa sửa dụng để đăng ký.');
                 redirect('client/user/login', 'refresh');
                 $this->ion_auth->login($username, $password, false);
                 redirect('client', 'refresh');

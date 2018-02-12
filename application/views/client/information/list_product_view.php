@@ -40,12 +40,26 @@
                                     echo '<tr>';
                                     echo '<td><b>STT</b></td>';
                                     echo '<td><b>Tên SP/dịch vụ/giải pháp/ứng dụng</b></td>';
+                                    echo '<td><b style="text-align: center !important;">Kết quả đánh giá</b></td>';
                                     echo '</tr>';
                                     if (!empty($products)) {
                                         foreach ($products as $key => $product):
                                             echo '<tr>';
                                             echo '<td>' . ($key + 1) . '</td>';
                                             echo '<td><a href="' . base_url('client/information/detail_product/' . $product['id']) . '">' . $product['name'] . '</a></td>';
+                                    ?>
+                                            <?php if($product['rating'] == 0): ?>
+                                            <td style="text-align: center;width:110px;"><a style="width:132px;" href="<?php echo base_url('client/information/detail_product/' . $product['id']) ?>" class="btn btn-default">Chưa đánh giá</a></td>
+                                            <?php else: ?>
+                                                <?php if($product['rating'] == 1): ?>
+                                                    <td style="text-align: center;width:110px;"><a style="width:132px;" href="<?php echo base_url('client/information/detail_product/' . $product['id']) ?>" class="btn btn-success">Đồng ý</a></td>
+                                                <?php elseif($product['rating'] == 2): ?>
+                                                    <td style="text-align: center;width:110px;"><a style="width:132px;" href="<?php echo base_url('client/information/detail_product/' . $product['id']) ?>" class="btn btn-warning">Đề nghị xem xét</a></td>
+                                                <?php elseif($product['rating'] == 3): ?>
+                                                    <td style="text-align: center;width:110px;"><a style="width:132px;" href="<?php echo base_url('client/information/detail_product/' . $product['id']) ?>" class="btn btn-danger">Không đồng ý</a></td>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                    <?php
                                             echo '</tr>';
                                         endforeach;
                                     }else {

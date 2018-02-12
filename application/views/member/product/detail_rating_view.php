@@ -85,20 +85,23 @@
                                     <a><i class="fa fa-thumbs-o-up margin-r-5"></i> Nhận xét chung về DN và định hướng hoạt động, sự phát triển bền vững....</a> <br><p class="" style="padding-left:20px;"><?php echo $rating['rating']; ?></p>
                                 </li>
                                 <li class="list-group-item">
+
                                     <a><i class="fa fa-star margin-r-5"></i> Kết quả thẩm định</a> <br><p class="" style="padding-left:20px;">
                                         <?php if($rating['result'] == 1): ?>
-                                    <td style="text-align: center;"><a href="javascript:void(0);" class="btn btn-success">Đồng ý</a></td>
-                                    <?php elseif($rating['result'] == 2): ?>
-                                        <td style="text-align: center;"><a href="javascript:void(0);" class="btn btn-warning">Đề nghị xem xét</a></td>
-                                    <?php elseif($rating['result'] == 3): ?>
-                                        <td style="text-align: center;"><a href="javascript:void(0);" class="btn btn-danger">Không đồng ý</a></td>
-                                    <?php endif; ?>
+                                            <td style="text-align: center;"><a href="javascript:void(0);" class="btn btn-success">Đồng ý</a></td>
+                                        <?php elseif($rating['result'] == 2): ?>
+                                            <td style="text-align: center;"><a href="javascript:void(0);" class="btn btn-warning">Đề nghị xem xét</a></td>
+                                        <?php elseif($rating['result'] == 3): ?>
+                                            <td style="text-align: center;"><a href="javascript:void(0);" class="btn btn-danger">Không đồng ý</a></td>
+                                        <?php endif; ?>
                                     </p>
                                 </li>
-                                <li class="list-group-item">
-                                    <a><i class="fa fa-user margin-r-5"></i> Người đánh giá</a><p class="pull-right" style="padding-left:20px;"><?php echo $member->last_name . ' ' . $member->first_name; ?></p>
-                                </li>
                             </ul>
+                            <!--                            --><?php //if(!$submitted || $submitted['is_submit'] != 1): ?>
+                            <!--                                <a href="--><?php //echo base_url('client/information/create_extra'); ?><!--" class="btn btn-primary btn-block"><b>Chỉnh sửa thông tin</b></a>-->
+                            <!--                            --><?php //else: ?>
+                            <!--                                <a href="javascript:void(0);" class="btn btn-danger btn-block" disabled><b>Thông tin đã đăng ký</b></a>-->
+                            <!--                            --><?php //endif; ?>
                         </div>
                     </div>
                     <!-- /.tab-content -->

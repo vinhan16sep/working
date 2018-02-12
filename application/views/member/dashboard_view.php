@@ -11,22 +11,11 @@
                 <div class="nav-tabs-custom">
                     <div class="tab-content">
                         <div class="post">
-                            <h4>Tổng số doanh nghiệp đăng ký: <span style="color: red"><?php echo $total_companys; ?></span></h4>
+                            <h4>Tổng số doanh nghiệp được chỉ định: <span style="color: red"><?php echo $total_companys; ?></span></h4>
                                 <p style="color:green;">Doanh nghiệp đã gửi thông tin đăng ký</p>
                                 <span>
                                     <a href="<?php echo base_url('member/company/index/'.$user_id); ?>" class="btn btn-success btn-block"><b>Xem danh sách các doanh nghiệp đã đăng ký</b></a>
                                 </span>
-                        </div>
-                        <div class="post">
-                            <h4>Tổng số người dùng đăng ký: <span style="color: red"><?php echo $total_users; ?></span></h4>
-                                <p style="color:green;">Người dùng đăng ký tài khoản</p>
-                                <span>
-                                    <a href="<?php echo base_url('admin/users/index/3') ?>" class="btn btn-success btn-block"><b>Xem danh sách người dùng đã đăng ký</b></a>
-                                </span>
-                        </div>
-                        <div class="post">
-                            <h4>Tổng số sản phẩm đăng ký: <span style="color: red"><?php echo $total_products; ?></span></h4>
-                                <p style="color:green;">Doanh nghiệp đã đăng ký sản phẩm / giải pháp / dịch vụ.</p>
                         </div>
                     </div>
                     <!-- /.tab-content -->

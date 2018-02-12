@@ -8,6 +8,7 @@ class Product extends Member_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('information_model');
+		$this->load->model('rating_model');
 
         $this->excel = new PHPExcel();
 	}
@@ -46,6 +47,78 @@ class Product extends Member_Controller{
 		$this->data['product'] = $product;
 		$this->render('member/product/detail_product_view');
 	}
+
+    public function rating($product_id = null){
+        if(!$product_id){
+            redirect('member/dashboard', 'refresh');
+        }
+
+        $rating = $this->rating_model->fetch_by_product_id('rating', $product_id);
+
+        if(!$rating){
+            redirect('member/dashboard', 'refresh');
+        }
+
+        $this->data['product'] = $this->information_model->fetch_product_by_id('product', $product_id);
+
+        $this->data['rating'] = $rating;
+        $this->render('member/product/detail_rating_view');
+    }
+
+    public function create($product_id = null) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        if(!$product_id){
+            redirect('member/dashboard', 'refresh');
+        }
+
+        $id = isset($product_id) ? (int) $product_id : (int) $this->input->post('id');
+
+        $product = $this->information_model->fetch_product_by_id('product', $id);
+
+        if(!$product){
+            redirect('member/dashboard', 'refresh');
+        }
+
+        $this->form_validation->set_rules('precision', 'Tính chính xác của hồ sơ khai: Doanh thu, nhân lực, giá thành, ngày ra thị trường...', 'trim|required');
+        $this->form_validation->set_rules('strong', 'Điểm nổi trội', 'trim|required');
+        $this->form_validation->set_rules('weak', 'Điểm yếu', 'trim|required');
+        $this->form_validation->set_rules('rating', 'Nhận xét chung về DN và định hướng hoạt động, sự phát triển bền vững....', 'trim|required');
+        $this->form_validation->set_rules('result', 'Kết quả thẩm định (chọn 1)', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['product'] = $product;
+            $this->render('member/product/create_rating_view');
+        } else {
+            if ($this->input->post()) {
+                $data = array(
+                    'member_id' => $this->ion_auth->user()->row()->id,
+                    'product_id' => $product['id'],
+                    'client_id' => $product['client_id'],
+                    'precision' => $this->input->post('precision'),
+                    'strong' => $this->input->post('strong'),
+                    'weak' => $this->input->post('weak'),
+                    'rating' => $this->input->post('rating'),
+                    'result' => $this->input->post('result'),
+                    'is_submit' => 1,
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $insert = $this->rating_model->insert('rating', $data);
+                if (!$insert) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
+                }
+                $this->information_model->update('product', $product['id'], array('rating' => $this->input->post('result')));
+                $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('member/', 'refresh');
+            }
+        }
+    }
 
     public function export($client_id){
         //activate worksheet number 1

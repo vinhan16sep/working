@@ -13,17 +13,18 @@
 <section class="main_content container-fluid">
     <div class="megatron">
         <div class="container">
-            <h1>Welcome to the website</h1>
-            <p>n laoreet felis hendrerit magna hendrerit, quis euismod sem sodales. Etiam posuere molestie rhoncus. Curabitur at dui felis. Mauris dignissim sollicitudin est, vel tincidunt odio vestibulum pharetra.</p>
+            <img src="<?php echo site_url('assets/public/img/vinasaBanner.png') ?>">
+            <h1>Cổng đăng ký danh hiệu Sao Khuê</h1>
+            <p></p>
             <ul class="nav nav-pills nav-justified">
+<!--                <li style="border-right:1px solid orange;">-->
+<!--                    <a href="--><?php //echo base_url('admin/user/login') ?><!--"><h4>Admin</h4></a>-->
+<!--                </li>-->
                 <li>
-                    <a href="javascript:void(0);">Admin page</a>
+                    <a href="<?php echo base_url('member/user/login') ?>"><h4>Hội đồng đánh giá</h4></a>
                 </li>
-                <li>
-                    <a href="javascript:void(0);">Client page</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">Admin page</a>
+                <li style="border-left:1px solid orange;">
+                    <a href="<?php echo base_url('client/user/login') ?>"><h4>Doanh nghiệp</h4></a>
                 </li>
             </ul>
         </div>

@@ -8,6 +8,7 @@ class Product extends Admin_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('information_model');
+		$this->load->model('rating_model');
 
         $this->excel = new PHPExcel();
 	}
@@ -44,6 +45,12 @@ class Product extends Admin_Controller{
             redirect('admin/dashboard', 'refresh');
         }
 		$this->data['product'] = $product;
+
+        $this->data['rating'] = $this->rating_model->fetch_by_product_id('rating', $id);
+
+        // Get member who rated this product
+        $this->data['member'] = $this->ion_auth->user((int) $this->data['rating']['member_id'])->row();
+
 		$this->render('admin/product/detail_product_view');
 	}
 

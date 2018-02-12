@@ -17,19 +17,31 @@
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Lĩnh vực</th>
+                                <th style="text-align: center;">Đánh giá</th>
                                 <th style="text-align: center;">Thao Tác</th>
                                 <?php foreach ($products as $key => $value): ?>
                                     <tr>
                                         <td><?php echo $stt++ ?></td>
                                         <td><?php echo $value['name'] ?></td>
                                         <td><?php echo $value['service'] ?></td>
+                                        <?php if($value['rating'] == 0): ?>
+                                            <td style="text-align: center;"><a href="<?php echo base_url('member/product/create/' . $value['id']) ?>" class="btn btn-default">Chưa đánh giá</a></td>
+                                        <?php else: ?>
+                                            <?php if($value['rating'] == 1): ?>
+                                                <td style="text-align: center;"><a href="<?php echo base_url('member/product/rating/' . $value['id']) ?>" class="btn btn-success">Xem đánh giá</a></td>
+                                            <?php elseif($value['rating'] == 2): ?>
+                                                <td style="text-align: center;"><a href="<?php echo base_url('member/product/rating/' . $value['id']) ?>" class="btn btn-warning">Xem đánh giá</a></td>
+                                            <?php elseif($value['rating'] == 3): ?>
+                                                <td style="text-align: center;"><a href="<?php echo base_url('member/product/rating/' . $value['id']) ?>" class="btn btn-danger">Xem đánh giá</a></td>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                         <td style="text-align: center;"><a href="<?php echo base_url('member/product/detail/' . $value['id']) ?>" class="btn btn-info">Xem chi tiết</a></td>
                                     </tr>
                                 <?php endforeach ?>
                             </table>
                         </div>
                         <?php else: ?>
-                            <div class="post">Chưa có doanh nghiệp đăng ký!</div>
+                            <div class="post">Doanh nghiệp chưa đăng ký sản phẩm nào!</div>
                         <?php endif ?>
                     </div>
                     <!-- /.tab-content -->

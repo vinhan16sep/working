@@ -24,7 +24,7 @@ $lang['account_creation_invalid_default_group'] = 'Invalid default group name se
 
 
 // Password
-$lang['password_change_successful']          = 'Password Successfully Changed';
+$lang['password_change_successful']          = 'Mật khẩu đã được thay đổi thành công';
 $lang['password_change_unsuccessful']        = 'Unable to Change Password';
 $lang['forgot_password_successful']          = 'Password Reset Email Sent';
 $lang['forgot_password_unsuccessful']        = 'Unable to Reset Password';
@@ -42,7 +42,7 @@ $lang['login_successful']                    = 'Logged In Successfully';
 $lang['login_unsuccessful']                  = 'Incorrect Login';
 $lang['login_unsuccessful_not_active']       = 'Account is inactive';
 $lang['login_timeout']                       = 'Temporarily Locked Out.  Try again later.';
-$lang['logout_successful']                   = 'Logged Out Successfully';
+$lang['logout_successful']                   = 'Thoát thành công';
 
 // Account Changes
 $lang['update_successful']                   = 'Account Information Successfully Updated';

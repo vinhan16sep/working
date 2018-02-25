@@ -328,10 +328,10 @@
                                             'Thị trường người tiêu dùng (TT mass)' => 'Thị trường người tiêu dùng (TT mass)'
                                         );
                             $target = array(
-                                            'Xuất khẩu mục tiêu - Mỹ và các nước Bắc Mỹ' => 'Xuất khẩu mục tiêu - Mỹ và các nước Bắc Mỹ',
-                                            'Xuất khẩu mục tiêu - Châu Âu' => 'Xuất khẩu mục tiêu - Châu Âu',
-                                            'Xuất khẩu mục tiêu - Nhật Bản' => 'Xuất khẩu mục tiêu - Nhật Bản',
-                                            'Xuất khẩu mục tiêu - Các nước trong khu vực' => 'Xuất khẩu mục tiêu - Các nước trong khu vực'
+                                            'Mỹ và các nước Bắc Mỹ' => 'Mỹ và các nước Bắc Mỹ',
+                                            'Châu Âu' => 'Châu Âu',
+                                            'Nhật Bản' => 'Nhật Bản',
+                                            'Các nước trong khu vực' => 'Các nước trong khu vực'
                                         );
                             ?>
                         </div>
@@ -521,5 +521,5 @@
         var anonymous = $(this).val();
         $('#anonymous').attr('value', anonymous);
     })
-    
+
 </script>

@@ -114,7 +114,6 @@ class Information_model extends CI_Model {
         $query = $this->db->select('*')
             ->from($type)
             ->where('id', $id)
-            ->where('is_deleted', 0)
             ->limit(1)
             ->get();
 
@@ -217,7 +216,7 @@ class Information_model extends CI_Model {
 
     public function update($type, $id, $information){
         $this->db->set($information)
-            ->where('id', $id)
+            ->where('client_id', $id)
             ->update($type);
 
         if($this->db->affected_rows() == 1){

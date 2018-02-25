@@ -24,7 +24,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('website');
-                            echo form_input('website', set_value('website'), 'class="form-control"');
+                            echo form_input('website', set_value('website', $extra['website']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('legal_representative');
-                            echo form_input('legal_representative', set_value('legal_representative'), 'class="form-control"');
+                            echo form_input('legal_representative', set_value('legal_representative', $extra['legal_representative']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('lp_position');
-                            echo form_input('lp_position', set_value('lp_position'), 'class="form-control"');
+                            echo form_input('lp_position', set_value('lp_position', $extra['lp_position']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('lp_email');
-                            echo form_input('lp_email', set_value('lp_email'), 'class="form-control"');
+                            echo form_input('lp_email', set_value('lp_email', $extra['lp_email']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('lp_phone');
-                            echo form_input('lp_phone', set_value('lp_phone'), 'class="form-control"');
+                            echo form_input('lp_phone', set_value('lp_phone', $extra['lp_phone']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('connector');
-                            echo form_input('connector', set_value('connector'), 'class="form-control"');
+                            echo form_input('connector', set_value('connector', $extra['connector']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('c_position');
-                            echo form_input('c_position', set_value('c_position'), 'class="form-control"');
+                            echo form_input('c_position', set_value('c_position', $extra['c_position']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('c_email');
-                            echo form_input('c_email', set_value('c_email'), 'class="form-control"');
+                            echo form_input('c_email', set_value('c_email', $extra['c_email']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('c_phone');
-                            echo form_input('c_phone', set_value('c_phone'), 'class="form-control"');
+                            echo form_input('c_phone', set_value('c_phone', $extra['c_phone']), 'class="form-control"');
                             ?>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('link');
-                            echo form_input('link', set_value('link'), 'class="form-control"');
+                            echo form_input('link', set_value('link', $extra['link']), 'class="form-control"');
                             ?>
                             <br>
                             <a class="btn btn-warning" href="<?php echo site_url('PDK-Sao-Khue-2018.docx') ?>" target="_blank">Download mẫu PĐK</a>

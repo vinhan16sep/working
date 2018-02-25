@@ -62,7 +62,7 @@ class Information extends Client_Controller {
                     'c_email' => $this->input->post('c_email'),
                     'c_phone' => $this->input->post('c_phone'),
                     'link' => $this->input->post('link'),
-                    'is_submit' => 1,
+//                    'is_submit' => 1,
                     'created_at' => $this->author_info['created_at'],
                     'created_by' => $this->author_info['created_by'],
                     'modified_at' => $this->author_info['modified_at'],
@@ -74,6 +74,59 @@ class Information extends Client_Controller {
                     $this->session->set_flashdata('message', 'There was an error inserting item');
                 }
                 $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('client/information', 'refresh');
+            }
+        }
+    }
+
+    public function edit_extra($request_id = NULL) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('website', 'Website', 'trim|required');
+        $this->form_validation->set_rules('legal_representative', 'Tên người đại diện pháp luật', 'trim|required');
+        $this->form_validation->set_rules('lp_position', 'Chức danh', 'trim|required');
+        $this->form_validation->set_rules('lp_email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('lp_phone', 'Di động', 'trim|required|numeric');
+        $this->form_validation->set_rules('connector', 'Tên người liên hệ với BTC', 'trim|required');
+        $this->form_validation->set_rules('c_position', 'Chức danh', 'trim|required');
+        $this->form_validation->set_rules('c_email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('c_phone', 'Di động', 'trim|required|numeric');
+        $this->form_validation->set_rules('link', 'Link download PĐK của DN', 'trim|required');
+
+        $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['extra'] = $this->information_model->fetch_by_user_id('information', $this->data['user']->id);
+
+            if (!$this->data['extra']) {
+                redirect('client/information', 'refresh');
+            }
+
+            $this->render('client/information/edit_extra_view');
+        } else {
+            if ($this->input->post()) {
+                $data = array(
+                    'website' => $this->input->post('website'),
+                    'legal_representative' => $this->input->post('legal_representative'),
+                    'lp_position' => $this->input->post('lp_position'),
+                    'lp_email' => $this->input->post('lp_email'),
+                    'lp_phone' => $this->input->post('lp_phone'),
+                    'connector' => $this->input->post('connector'),
+                    'c_position' => $this->input->post('c_position'),
+                    'c_email' => $this->input->post('c_email'),
+                    'c_phone' => $this->input->post('c_phone'),
+                    'link' => $this->input->post('link'),
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                try {
+                    $this->information_model->update('information', $this->data['user']->id, $data);
+                    $this->session->set_flashdata('message', 'Item updated successfully');
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
+                }
 
                 redirect('client/information', 'refresh');
             }

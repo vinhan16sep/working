@@ -33,7 +33,7 @@
                             <h4>Thông tin khác</h4>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <a><i class="fa fa-globe margin-r-5"></i> Website</a> <p class="pull-right"><?php echo $submitted['website']; ?></p>
+                                    <a><i class="fa fa-globe margin-r-5"></i> Tên đơn vị</a> <p class="pull-right"><?php echo $submitted['website']; ?></p>
                                 </li>
                                 <li class="list-group-item">
                                     <a><i class="fa fa-user margin-r-5"></i> Tên người đại diện pháp luật</a> <p class="pull-right"><?php echo $submitted['legal_representative']; ?></p>
@@ -63,10 +63,11 @@
                                     <a><i class="fa fa-link margin-r-5"></i> Link download PĐK của DN</a> <p class="pull-right"><?php echo $submitted['link']; ?></p>
                                 </li>
                             </ul>
-                            <?php if(!$submitted || $submitted['is_submit'] != 1): ?>
-                            <a href="<?php echo base_url('client/information/create_extra'); ?>" class="btn btn-primary btn-block"><b>Chỉnh sửa thông tin</b></a>
+                            <?php if(!$submitted): ?>
+                            <a href="<?php echo base_url('client/information/create_extra'); ?>" class="btn btn-primary btn-block"><b>Nhập thông tin</b></a>
                             <?php else: ?>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-block" disabled><b>Thông tin đã đăng ký</b></a>
+                            <a href="<?php echo base_url('client/information/edit_extra'); ?>" class="btn btn-primary btn-block"><b>Sửa thông tin</b></a>
+<!--                            <a href="javascript:void(0);" class="btn btn-danger btn-block" disabled><b>Thông tin đã đăng ký</b></a>-->
                             <?php endif; ?>
                         </div>
                     </div>

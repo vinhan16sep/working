@@ -55,10 +55,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('owner_equity');
-                            echo form_input('owner_equity', set_value('owner_equity'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'owner_equity_2015');
+                            echo form_error('owner_equity_2015');
+                            echo form_input('owner_equity_2015', set_value('owner_equity_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'owner_equity_2016');
+                            echo form_error('owner_equity_2016');
+                            echo form_input('owner_equity_2016', set_value('owner_equity_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'owner_equity_2017');
+                            echo form_error('owner_equity_2017');
+                            echo form_input('owner_equity_2017', set_value('owner_equity_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,10 +87,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('total_income');
-                            echo form_input('total_income', set_value('total_income'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'total_income_2015');
+                            echo form_error('total_income_2015');
+                            echo form_input('total_income_2015', set_value('total_income_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'total_income_2016');
+                            echo form_error('total_income_2016');
+                            echo form_input('total_income_2016', set_value('total_income_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'total_income_2017');
+                            echo form_error('total_income_2017');
+                            echo form_input('total_income_2017', set_value('total_income_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,10 +119,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('software_income');
-                            echo form_input('software_income', set_value('software_income'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'software_income_2015');
+                            echo form_error('software_income_2015');
+                            echo form_input('software_income_2015', set_value('software_income_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'software_income_2016');
+                            echo form_error('software_income_2016');
+                            echo form_input('software_income_2016', set_value('software_income_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'software_income_2017');
+                            echo form_error('software_income_2017');
+                            echo form_input('software_income_2017', set_value('software_income_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,10 +151,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('it_income');
-                            echo form_input('it_income', set_value('it_income'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'it_income_2015');
+                            echo form_error('it_income_2015');
+                            echo form_input('it_income_2015', set_value('it_income_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'it_income_2016');
+                            echo form_error('it_income_2016');
+                            echo form_input('it_income_2016', set_value('it_income_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'it_income_2017');
+                            echo form_error('it_income_2017');
+                            echo form_input('it_income_2017', set_value('it_income_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,10 +183,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('export_income');
-                            echo form_input('export_income', set_value('export_income'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'export_income_2015');
+                            echo form_error('export_income_2015');
+                            echo form_input('export_income_2015', set_value('export_income_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'export_income_2016');
+                            echo form_error('export_income_2016');
+                            echo form_input('export_income_2016', set_value('export_income_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'export_income_2017');
+                            echo form_error('export_income_2017');
+                            echo form_input('export_income_2017', set_value('export_income_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,10 +215,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('total_labor');
-                            echo form_input('total_labor', set_value('total_labor'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'total_labor_2015');
+                            echo form_error('total_labor_2015');
+                            echo form_input('total_labor_2015', set_value('total_labor_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'total_labor_2016');
+                            echo form_error('total_labor_2016');
+                            echo form_input('total_labor_2016', set_value('total_labor_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'total_labor_2017');
+                            echo form_error('total_labor_2017');
+                            echo form_input('total_labor_2017', set_value('total_labor_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,10 +247,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
-                            echo form_error('total_ltv');
-                            echo form_input('total_ltv', set_value('total_ltv'), 'class="form-control"');
+                            echo form_label('Năm 2015', 'total_ltv_2015');
+                            echo form_error('total_ltv_2015');
+                            echo form_input('total_ltv_2015', set_value('total_ltv_2015'), 'class="form-control"');
                             ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2016', 'total_ltv_2016');
+                            echo form_error('total_ltv_2016');
+                            echo form_input('total_ltv_2016', set_value('total_ltv_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
+                            echo form_label('Năm 2017', 'total_ltv_2017');
+                            echo form_error('total_ltv_2017');
+                            echo form_input('total_ltv_2017', set_value('total_ltv_2017'), 'class="form-control"');
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,7 +296,6 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                                 $options = array(
-                                    '' => '-- Chọn một dịch vụ --',
                                     'Chính phủ điện tử' => 'Chính phủ điện tử',
                                     'Ngành y tế' => 'Ngành y tế',
                                     'Ngành giáo dục' => 'Ngành giáo dục',
@@ -189,8 +307,11 @@
                                     'Bảo mật an toàn thông tin' => 'Bảo mật an toàn thông tin',
                                     'Tư vấn' => 'Tư vấn'
                                 );
-
-                                echo form_dropdown('main_service', $options, '', 'class="form-control"');
+                                foreach ($options as $key => $value) {
+                                    echo form_checkbox('main_service[]', $value, false, 'class="btn-checkbox"');
+                                    echo $key.'<br>';
+                                }
+                                // echo form_dropdown('main_service', $options, '', 'class="form-control"');
 
                             ?>
                         </div>
@@ -201,58 +322,58 @@
                         <div class="col-sm-3 col-md-3 col-sx-12">
                             <?php
                             echo form_label('Thị trường chính', 'main_market');
+                            $domestic = array(
+                                            'Thị trường Chính phủ' => 'Thị trường Chính phủ',
+                                            'Thị trường doanh nghiệp' => 'Thị trường doanh nghiệp',
+                                            'Thị trường người tiêu dùng (TT mass)' => 'Thị trường người tiêu dùng (TT mass)'
+                                        );
+                            $target = array(
+                                            'Xuất khẩu mục tiêu - Mỹ và các nước Bắc Mỹ' => 'Xuất khẩu mục tiêu - Mỹ và các nước Bắc Mỹ',
+                                            'Xuất khẩu mục tiêu - Châu Âu' => 'Xuất khẩu mục tiêu - Châu Âu',
+                                            'Xuất khẩu mục tiêu - Nhật Bản' => 'Xuất khẩu mục tiêu - Nhật Bản',
+                                            'Xuất khẩu mục tiêu - Các nước trong khu vực' => 'Xuất khẩu mục tiêu - Các nước trong khu vực'
+                                        );
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12" style="padding-left: 30px;">
-                            <strong>Trong nước</strong>
-                            <div class="row">
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Thị trường Chính phủ', '', "id='main_market_1'"); ?> Thị trường Chính phủ
-                                </label>
-                                &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Thị trường doanh nghiệp', '', "id='main_market_2'"); ?> Thị trường doanh nghiệp
-                                </label>
-                                &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Thị trường người tiêu dùng (TT mass)', '', "id='main_market_3'"); ?> Thị trường người tiêu dùng (TT mass)
-                                </label>
+                            <strong style="margin-left: -15px">Trong nước</strong>
+                            <div class="row" style="margin-left: 20px">
+                                <?php 
+                                    foreach ($domestic as $key => $value) {
+                                        echo form_checkbox('main_market[]', $value, false, 'class="btn-checkbox"');
+                                        echo $key.'<br>';
+                                    }
+                                ?>
                             </div>
                             <br>
-                            <strong>Quốc tế</strong>
-                            <div class="row">
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Gia công xuất khẩu', '', "id='main_market_4'"); ?> Gia công xuất khẩu
-                                </label>
+                            <strong style="margin-left: -15px">Quốc tế</strong>
+                            <div class="row" style="margin-left: 20px">
+                                <?php 
+                                    echo form_checkbox('main_market[]', 'Gia công xuất khẩu', false, 'class="btn-checkbox"');
+                                    echo 'Gia công xuất khẩu';
+                                ?>
                                 &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu SP/Giải pháp', '', "id='main_market_5'"); ?> Xuất khẩu SP/Giải pháp
-                                </label>
+                                <?php 
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu SP/Giải pháp', false, 'class="btn-checkbox"');
+                                    echo 'Xuất khẩu SP/Giải pháp';
+                                ?>
                                 &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu nhân lực CNTT', '', "id='main_market_6'"); ?> Xuất khẩu nhân lực CNTT
-                                </label>
+                                <?php 
+                                    echo form_checkbox('main_market[]', 'Xuất khẩu nhân lực CNTT', false, 'class="btn-checkbox"');
+                                    echo 'Xuất khẩu nhân lực CNTT';
+                                ?>
                             </div>
-                            <div class="row">
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu mục tiêu - Mỹ và các nước Bắc Mỹ', '', "id='main_market_7'"); ?> Xuất khẩu mục tiêu - Mỹ và các nước Bắc Mỹ
-                                </label>
-                                &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu mục tiêu - Châu Âu', '', "id='main_market_8'"); ?> Xuất khẩu mục tiêu - Châu Âu
-                                </label>
-                                &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu mục tiêu - Nhật Bản', '', "id='main_market_9'"); ?> Xuất khẩu mục tiêu - Nhật Bản
-                                </label>
-                                &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu mục tiêu - Các nước trong khu vực', '', "id='main_market_10'"); ?> Xuất khẩu mục tiêu - Các nước trong khu vực
-                                </label>
-                                &nbsp;&nbsp;&nbsp;
-                                <label for="main_market_1">
-                                    <?php echo form_radio('main_market', 'Xuất khẩu mục tiêu - Khác (nêu rõ)', '', "id='main_market_11'"); ?> Xuất khẩu mục tiêu - Khác (nêu rõ)
-                                </label>
+                            <div class="row" style="margin-left: 20px">
+                                <strong>Xuất khẩu mục tiêu</strong><br>
+                                <?php 
+                                    foreach ($target as $key => $value) {
+                                        echo form_checkbox('main_market[]', $value, false, 'class="btn-checkbox"');
+                                        echo $key.'<br>';
+                                    }
+                                    echo form_checkbox('main_market[]', '', false, 'class="btn-checkbox" id="anonymous"');
+                                    echo 'Xuất khẩu mục tiêu - Khác (nêu rõ)<br>';
+                                ?>
+                                <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
                             </div>
                         </div>
                     </div>
@@ -268,7 +389,7 @@
                             <?php
                             echo form_error('link');
                             $js = 'onClick="make_sure()"';
-                            echo form_label(form_checkbox('is_submit', '', FALSE, $js) . ' Tôi đã chắc chắn về thông tin bên trên.');
+                            echo form_label(form_checkbox('is_submit', '', FALSE, $js.'class="is_submit"') . ' Tôi đã chắc chắn về thông tin bên trên.');
                             ?>
                         </div>
                     </div>
@@ -288,6 +409,7 @@
     </section>
 </div>
 <script>
+    var base_url = location.protocol + "//" + location.host + (location.port ? ':' + location.port : '')+'/working';
     if($('input[name="is_submit"]').is(':checked') === true){
         $('.submit-extra-form').show();
     }else{
@@ -386,4 +508,18 @@
             }
         }
     });
+
+    $('#anonymous').click(function(){
+        if($(this).prop("checked") == true){
+            $('.input-anonymous').slideDown();
+        }else{
+            $('.input-anonymous').slideUp();
+        }
+    })
+
+    $('.input-anonymous').change(function(){
+        var anonymous = $(this).val();
+        $('#anonymous').attr('value', anonymous);
+    })
+    
 </script>

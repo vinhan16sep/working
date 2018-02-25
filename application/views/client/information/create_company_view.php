@@ -435,25 +435,67 @@
             equity_2017: {
                 required: true
             },
-            owner_equity: {
+            owner_equity_2015: {
                 required: true
             },
-            total_income: {
+            owner_equity_2016: {
                 required: true
             },
-            software_income: {
+            owner_equity_2017: {
                 required: true
             },
-            it_income: {
+            total_income_2015: {
                 required: true
             },
-            export_income: {
+            total_income_2017: {
                 required: true
             },
-            total_labor: {
+            total_income_2016: {
                 required: true
             },
-            total_ltv: {
+            software_income_2015: {
+                required: true
+            },
+            software_income_2016: {
+                required: true
+            },
+            software_income_2017: {
+                required: true
+            },
+            it_income_2015: {
+                required: true
+            },
+            it_income_2016: {
+                required: true
+            },
+            it_income_2017: {
+                required: true
+            },
+            export_income_2015: {
+                required: true
+            },
+            export_income_2016: {
+                required: true
+            },
+            export_income_2017: {
+                required: true
+            },
+            total_labor_2015: {
+                required: true
+            },
+            total_labor_2016: {
+                required: true
+            },
+            total_labor_2017: {
+                required: true
+            },
+            total_ltv_2015: {
+                required: true
+            },
+            total_ltv_2016: {
+                required: true
+            },
+            total_ltv_2017: {
                 required: true
             },
             description: {
@@ -476,25 +518,67 @@
             equity_2017: {
                 required: 'Cần nhập Vốn điều lệ 2017'
             },
-            owner_equity: {
+            owner_equity_2015: {
                 required: 'Cần nhập Vốn chủ sở hữu'
             },
-            total_income: {
+            owner_equity_2016: {
+                required: 'Cần nhập Vốn chủ sở hữu'
+            },
+            owner_equity_2017: {
+                required: 'Cần nhập Vốn chủ sở hữu'
+            },
+            total_income_2015: {
                 required: 'Cần nhập Tổng doanh thu DN'
             },
-            software_income: {
+            total_income_2016: {
+                required: 'Cần nhập Tổng doanh thu DN'
+            },
+            total_income_2017: {
+                required: 'Cần nhập Tổng doanh thu DN'
+            },
+            software_income_2015: {
                 required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
             },
-            it_income: {
+            software_income_2016: {
+                required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
+            },
+            software_income_2017: {
+                required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
+            },
+            it_income_2015: {
                 required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
             },
-            export_income: {
+            it_income_2016: {
+                required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
+            },
+            it_income_2017: {
+                required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
+            },
+            export_income_2015: {
                 required: 'Cần nhập Tổng DT xuất khẩu'
             },
-            total_labor: {
+            export_income_2016: {
+                required: 'Cần nhập Tổng DT xuất khẩu'
+            },
+            export_income_2017: {
+                required: 'Cần nhập Tổng DT xuất khẩu'
+            },
+            total_labor_2015: {
                 required: 'Cần nhập Tổng số lao động của DN'
             },
-            total_ltv: {
+            total_labor_2016: {
+                required: 'Cần nhập Tổng số lao động của DN'
+            },
+            total_labor_2017: {
+                required: 'Cần nhập Tổng số lao động của DN'
+            },
+            total_ltv_2015: {
+                required: 'Cần nhập Tổng số LTV'
+            },
+            total_ltv_2016: {
+                required: 'Cần nhập Tổng số LTV'
+            },
+            total_ltv_2017: {
                 required: 'Cần nhập Tổng số LTV'
             },
             description: {

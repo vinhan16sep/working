@@ -115,19 +115,22 @@
                                     <a><i class="fa fa-file margin-r-5"></i> Giới thiệu chung</a> <p class="" style="padding-left:20px;"><?php echo $submitted['description'] ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <a><i class="fa fa-circle margin-r-5"></i> SP dịch vụ chính của DN</a> 
+                                    <a><i class="fa fa-circle margin-r-5"></i> SP dịch vụ chính của DN</a>
+                                    <?php if(!empty($submitted['main_service'])): ?>
                                     <?php $main_service = json_decode($submitted['main_service']) ?>
                                     <?php foreach ($main_service as $key => $value): ?>
                                         <p class="" style="padding-left:20px;"><?php echo $value ?></p>
                                     <?php endforeach ?>
-                                    
+                                    <?php endif; ?>
                                 </li>
                                 <li class="list-group-item">
                                     <a><i class="fa fa-globe margin-r-5"></i> Thị trường chính</a>
+                                    <?php if(!empty($submitted['main_market'])): ?>
                                     <?php $main_market = json_decode($submitted['main_market']) ?>
                                     <?php foreach ($main_market as $key => $value): ?>
                                         <p class="" style="padding-left:20px;"><?php echo $value ?></p>
                                     <?php endforeach ?>
+                                    <?php endif; ?>
                                 </li>
                             </ul>
                             <?php if(!$submitted || $submitted['is_submit'] != 1): ?>

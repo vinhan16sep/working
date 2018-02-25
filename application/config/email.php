@@ -23,3 +23,4 @@ $config['newline'] = "\r\n";
 
 /* End of file email.php */
 /* Location: ./application/config/email.php */
+

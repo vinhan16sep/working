@@ -1,5 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
+<style>
+    .error{
+        color: red;
+    }
+</style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
         <div class="row modified-mode">
@@ -8,7 +12,7 @@
                     <h1 style="text-align:center;">THÔNG TIN SẢN PHẨM</h1>
                 </div>
                 <?php
-                echo form_open_multipart('', array('class' => 'form-horizontal'));
+                echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'product-form'));
                 ?>
                 <div class="form-group">
                     <div class="row">
@@ -368,4 +372,107 @@
             $('.submit-extra-form').hide();
         }
     }
+
+    $('#product-form').validate({
+        rules: {
+            name: {
+                required: true
+            },
+            service: {
+                required: true
+            },
+            functional: {
+                required: true
+            },
+            process: {
+                required: true
+            },
+            security: {
+                required: true
+            },
+            positive: {
+                required: true
+            },
+            compare: {
+                required: true
+            },
+            income: {
+                required: true
+            },
+            area: {
+                required: true
+            },
+            open_date: {
+                required: true
+            },
+            price: {
+                required: true
+            },
+            customer: {
+                required: true
+            },
+            after_sale: {
+                required: true
+            },
+            team: {
+                required: true
+            },
+            award: {
+                required: true
+            },
+            certificate: {
+                required: true
+            }
+        },
+        messages :{
+            name: {
+                required : 'Cần nhập Tên SP/dịch vụ/giải pháp/ứng dụng'
+            },
+            service: {
+                required: 'Cần nhập lĩnh vực'
+            },
+            certificate: {
+                required: 'Cần nhập công năng của sản phẩm'
+            },
+            process: {
+                required: 'Cần nhập công nghệ và quy trình chất lượng'
+            },
+            security: {
+                required: 'Cần nhập Bảo mật của sản phẩm'
+            },
+            positive: {
+                required: 'Cần nhập Các ưu điểm nổi trội'
+            },
+            compare: {
+                required: 'Cần nhập phần So sánh'
+            },
+            income: {
+                required: 'Cần nhập Doanh thu của SP/GP/DV năm 2016, 2017'
+            },
+            area: {
+                required: 'Thị phần của SP/giải pháp/DV'
+            },
+            open_date: {
+                required: 'Ngày thương mại hoá/ra mắt dịch vụ'
+            },
+            price: {
+                required: 'Cần nhập Giá SP/GP/DV'
+            },
+            customer: {
+                required: 'Cần nhập 1 số khách hàng tiêu biểu'
+            },
+            after_sale: {
+                required: 'Cần nhập Dịch vụ sau bán hàng'
+            },
+            team: {
+                required : 'Cần nhập Đội ngũ phát triển'
+            },
+            award: {
+                required: 'Cần nhập Các giải thưởng/DH đã nhận được'
+            },
+            certificate: {
+                required: 'Cần nhập Giấy chứng nhận bản quyền/cam kết bản quyền'
+            }
+        }
+    });
 </script>

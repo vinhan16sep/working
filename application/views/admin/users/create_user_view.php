@@ -65,21 +65,21 @@
                         echo form_password('password_confirm','','class="form-control"');
                         ?>
                     </div>
-                    <div class="form-group">
-                        <?php
-                        if(isset($groups)) {
-                            echo form_label('Nhóm','groups[]');
-                            foreach($groups as $group) {
-                                echo '<div class="checkbox">';
-                                echo '<label>';
-                                echo form_checkbox('groups[]', $group->id, set_checkbox('groups[]', $group->id));
-                                echo ' '.$group->name;
-                                echo '</label>';
-                                echo '</div>';
-                            }
-                        }
-                        ?>
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        --><?php
+//                        if(isset($groups)) {
+//                            echo form_label('Nhóm','groups[]');
+//                            foreach($groups as $group) {
+//                                echo '<div class="checkbox">';
+//                                echo '<label>';
+//                                echo form_checkbox('groups[]', $group->id, set_checkbox('groups[]', $group->id));
+//                                echo ' '.$group->name;
+//                                echo '</label>';
+//                                echo '</div>';
+//                            }
+//                        }
+//                        ?>
+<!--                    </div>-->
                     <br>
                     <div class="form-group col-sm-12 text-right">
                         <input type="hidden" name="url" value="<?php echo $this->uri->segment(4); ?>">

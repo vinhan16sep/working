@@ -298,7 +298,7 @@ class Information_model extends CI_Model {
         return $result = $this->db->get()->row_array();
     }
       
-      public function get_all_for_export($type, $client_id = null){
+    public function get_all_for_export($type, $client_id = null){
         $this->db->select('*');
         $this->db->from($type);
         if($client_id != null){
@@ -306,6 +306,15 @@ class Information_model extends CI_Model {
         }
         $this->db->where('is_submit', 1);
         $this->db->order_by("id", "asc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    public function get_all_product_for_export($type, $client_id = null){
+        $this->db->select('users.company, product.*');
+        $this->db->from($type);
+        $this->db->join('users', 'users.id = product.client_id');
+        $this->db->order_by("product.client_id", "asc");
 
         return $result = $this->db->get()->result_array();
     }

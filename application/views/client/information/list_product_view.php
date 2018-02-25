@@ -3,32 +3,30 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
         <div class="row">
-            <div class="col-md-6">
-                <div class="nav-tabs-custom">
-                    <div class="tab-content">
-                        <div class="post">
-                            <h4>Tài khoản</h4>
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item" style="height: 80px !important;">
-                                    <a><i class="fa fa-building-o margin-r-5"></i> Doanh nghiệp</a> <p class="pull-right"><?php echo $user->company; ?></p>
-                                </li>
-                                <li class="list-group-item">
-                                    <a><i class="fa fa-envelope margin-r-5"></i> Email</a> <p class="pull-right"><?php echo $user->email; ?></p>
-                                </li>
-                                <li class="list-group-item">
-                                    <a><i class="fa fa-phone margin-r-5"></i> Điện thoại</a> <p class="pull-right"><?php echo $user->phone; ?></p>
-                                </li>
-                                <li class="list-group-item" style="height: 80px !important;">
-                                    <a><i class="fa fa-map-marker margin-r-5"></i> Địa chỉ</a> <p class="pull-right"><?php echo $user->address; ?></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.tab-content -->
-                </div>
-                <!-- /.nav-tabs-custom -->
-            </div>
-            <div class="col-md-6">
+<!--            <div class="col-md-6">-->
+<!--                <div class="nav-tabs-custom">-->
+<!--                    <div class="tab-content">-->
+<!--                        <div class="post">-->
+<!--                            <h4>Tài khoản</h4>-->
+<!--                            <ul class="list-group list-group-unbordered">-->
+<!--                                <li class="list-group-item" style="height: 80px !important;">-->
+<!--                                    <a><i class="fa fa-building-o margin-r-5"></i> Doanh nghiệp</a> <p class="pull-right">--><?php //echo $user->company; ?><!--</p>-->
+<!--                                </li>-->
+<!--                                <li class="list-group-item">-->
+<!--                                    <a><i class="fa fa-envelope margin-r-5"></i> Email</a> <p class="pull-right">--><?php //echo $user->email; ?><!--</p>-->
+<!--                                </li>-->
+<!--                                <li class="list-group-item">-->
+<!--                                    <a><i class="fa fa-phone margin-r-5"></i> Điện thoại</a> <p class="pull-right">--><?php //echo $user->phone; ?><!--</p>-->
+<!--                                </li>-->
+<!--                                <li class="list-group-item" style="height: 80px !important;">-->
+<!--                                    <a><i class="fa fa-map-marker margin-r-5"></i> Địa chỉ</a> <p class="pull-right">--><?php //echo $user->address; ?><!--</p>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="col-md-10 col-md-offset-1">
                 <div class="nav-tabs-custom">
                     <div class="tab-content">
                         <div class="post">

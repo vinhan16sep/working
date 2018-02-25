@@ -15,9 +15,13 @@ class User extends MY_Controller {
     }
 
     public function login() {
-        if ($this->ion_auth->logged_in() || $this->ion_auth->in_group('clients'))
-        {
-            redirect('client/dashboard', 'refresh');
+        if ($this->ion_auth->logged_in()){
+            if($this->ion_auth->in_group('clients')){
+                redirect('client/dashboard', 'refresh');
+            }else{
+                $this->ion_auth->logout();
+                redirect('client/user/login', 'refresh');
+            }
         }
         $this->data['page_title'] = 'Login';
         if ($this->input->post()) {
@@ -75,6 +79,16 @@ class User extends MY_Controller {
                 'phone' => $this->input->post('phone')
             );
             $result = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
+            if($result){
+                $this->load->model('status_model');
+                $status = array(
+                    'client_id' => $result,
+                    'is_information' => 0,
+                    'is_company' => 0,
+                    'is_product' => 0
+                );
+                $this->status_model->insert('status', $status);
+            }
 
             if($result){
                 $this->session->set_flashdata('register_success', 'Vui lòng kích hoạt tài khoản theo hướng dẫn được gửi về email bạn vừa sửa dụng để đăng ký.');

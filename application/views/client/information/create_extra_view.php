@@ -1,5 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
+<style>
+    .error{
+        color: red;
+    }
+</style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
         <div class="">
@@ -39,7 +43,7 @@
                     <h1 style="text-align:center;">THÔNG TIN ĐĂNG KÝ</h1>
                 </div>
                 <?php
-                echo form_open_multipart('', array('class' => 'form-horizontal'));
+                echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'extra-form'));
                 ?>
                 <div class="form-group">
                     <div class="row">
@@ -191,6 +195,8 @@
                             echo form_error('link');
                             echo form_input('link', set_value('link'), 'class="form-control"');
                             ?>
+                            <br>
+                            <a class="btn btn-warning" href="<?php echo site_url('PDK-Sao-Khue-2018.docx') ?>" target="_blank">Download mẫu PĐK</a>
                         </div>
                     </div>
                 </div>
@@ -238,4 +244,79 @@
             $('.submit-extra-form').hide();
         }
     }
+
+    $('#extra-form').validate({
+        rules: {
+            website: {
+                required: true
+            },
+            legal_representative: {
+                required: true
+            },
+            lp_position: {
+                required: true
+            },
+            lp_email: {
+                required: true,
+                email: true
+            },
+            lp_phone: {
+                required: true,
+                digits: true
+            },
+            connector: {
+                required: true
+            },
+            c_position: {
+                required: true
+            },
+            c_email: {
+                required: true,
+                email: true
+            },
+            c_phone: {
+                required: true,
+                digits: true
+            },
+            link: {
+                required: true
+            }
+        },
+        messages :{
+            website: {
+                required : 'Cần nhập Website'
+            },
+            legal_representative: {
+                required: 'Cần nhập Tên người đại diện pháp luật'
+            },
+            lp_position: {
+                required: 'Cần nhập Chức danh'
+            },
+            lp_email: {
+                required: 'Cần nhập Email',
+                email: 'Email không hợp lệ'
+            },
+            lp_phone: {
+                required: 'Cần nhập số điện thoại di động',
+                digits: 'Số điện thoại di động chỉ chứa ký tự số'
+            },
+            connector: {
+                required: 'Cần nhập Tên người liên hệ với BTC'
+            },
+            c_position: {
+                required: 'Cần nhập Chức danh'
+            },
+            c_email: {
+                required: 'Cần nhập Email',
+                email: 'Email không hợp lệ'
+            },
+            c_phone: {
+                required: 'Cần nhập số điện thoại di động',
+                digits: 'Số điện thoại di động chỉ chứa ký tự số'
+            },
+            link: {
+                required: 'Link download PĐK của DN'
+            }
+        }
+    });
 </script>

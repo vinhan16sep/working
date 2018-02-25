@@ -37,9 +37,7 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- /.tab-content -->
                 </div>
-                <!-- /.nav-tabs-custom -->
             </div>
             <div class="col-md-6">
                 <div class="nav-tabs-custom">

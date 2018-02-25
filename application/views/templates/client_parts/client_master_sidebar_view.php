@@ -32,21 +32,21 @@
                 <li class="<?php echo ($active == 'menu')? 'active' : '' ?>">
                     <a href="<?php echo base_url('client/information/extra'); ?>">
                         <i class="fa fa-bars" aria-hidden="true"></i>
-                        <span>TT đăng ký</span>
+                        <span>Thông tin đăng ký</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>
                 <li class="<?php echo ($active == 'menu')? 'active' : '' ?>">
                     <a href="<?php echo base_url('client/information/company'); ?>">
                         <i class="fa fa-bars" aria-hidden="true"></i>
-                        <span>TT doanh nghiệp</span>
+                        <span>Thông tin doanh nghiệp</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>
                 <li class="<?php echo ($active == 'menu')? 'active' : '' ?>">
                     <a href="<?php echo base_url('client/information/products'); ?>">
                         <i class="fa fa-bars" aria-hidden="true"></i>
-                        <span>TT sản phẩm</span>
+                        <span>Thông tin Sản phẩm/Dịch vụ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;đề cử</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>

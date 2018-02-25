@@ -17,7 +17,7 @@
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Lĩnh vực</th>
-                                <th style="text-align: center;">Thao Tác</th>
+                                <th style="text-align: center;">Thông tin / Kết quả</th>
                                 <?php foreach ($products as $key => $value): ?>
                                     <tr>
                                         <td><?php echo $stt++ ?></td>

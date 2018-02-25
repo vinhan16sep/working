@@ -144,6 +144,18 @@
                   Thời Gian Hiện Tại
                   <small><?php echo date('d/m/Y') ?></small>
                 </p>
+                  <p>
+                      Doanh nghiệp
+                      <small><?php echo $user_info->company; ?></small>
+                  </p>
+                  <p>
+                      Email
+                      <small><?php echo $user_info->email; ?></small>
+                  </p>
+                  <p>
+                      Điện thoại
+                      <small><?php echo $user_info->phone; ?></small>
+                  </p>
               </li>
               <!-- menu body -->
 

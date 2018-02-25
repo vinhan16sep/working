@@ -191,9 +191,14 @@ class Member_Controller extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group('members')) {
-            //redirect them to the login page
-            redirect('member/user/login', 'refresh');
+        if(!$this->ion_auth->logged_in()){
+            redirect('homepage', 'refresh');
+        }else{
+            if (!$this->ion_auth->in_group('members')) {
+                $this->ion_auth->logout();
+                //redirect them to the login page
+                redirect('member/user/login', 'refresh');
+            }
         }
         $this->data['user_email'] = $this->ion_auth->user()->row()->username;
         $this->data['page_title'] = 'Member area';
@@ -302,10 +307,17 @@ class Client_Controller extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        if (!$this->ion_auth->logged_in() || !$this->ion_auth->in_group('clients')) {
-            //redirect them to the login page
-            redirect('client/user/login', 'refresh');
+        if(!$this->ion_auth->logged_in()){
+            redirect('homepage', 'refresh');
+        }else{
+            if (!$this->ion_auth->in_group('clients')) {
+                $this->ion_auth->logout();
+                //redirect them to the login page
+                redirect('client/user/login', 'refresh');
+            }
         }
+
+        $this->data['user_info'] = $this->ion_auth->user()->row();
         $this->data['user_email'] = $this->ion_auth->user()->row()->username;
         $this->data['page_title'] = 'Administrator area';
 

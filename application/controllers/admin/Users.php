@@ -26,22 +26,26 @@ class Users extends Admin_Controller
                 $users[$key]['member_id'] = $company['member_id'];
             }
         }
+
+        $this->data['group'] = $group_id;
+
         $this->data['users'] = $users;
         $this->render('admin/users/list_users_view');
     }
 
-    public function create(){
+    public function create($group_id = null){
         $this->data['page_title'] = 'Tạo mới user';
         $this->load->library('form_validation');
         $this->form_validation->set_rules('first_name','First name','trim');
         $this->form_validation->set_rules('last_name','Last name','trim');
         $this->form_validation->set_rules('company','Company','trim');
         $this->form_validation->set_rules('phone','Phone','trim');
+        $this->form_validation->set_rules('position','Position','trim');
         $this->form_validation->set_rules('username','Username','trim|required|is_unique[users.username]');
         $this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[users.email]');
         $this->form_validation->set_rules('password','Password','required');
         $this->form_validation->set_rules('password_confirm','Password confirmation','required|matches[password]');
-        $this->form_validation->set_rules('groups[]','Groups','required|integer');
+//        $this->form_validation->set_rules('groups[]','Groups','required|integer');
 
         if($this->form_validation->run()===FALSE) {
             $this->data['groups'] = $this->ion_auth->groups()->result();
@@ -51,7 +55,7 @@ class Users extends Admin_Controller
             $username = $this->input->post('username');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
-            $group_ids = $this->input->post('groups');
+            $group_ids = array($group_id);
 
             $additional_data = array(
                 'first_name' => $this->input->post('first_name'),
@@ -59,9 +63,23 @@ class Users extends Admin_Controller
                 'company' => $this->input->post('company'),
                 'phone' => $this->input->post('phone')
             );
-            $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
+            $register = $this->ion_auth->register($username, $password, $email, $additional_data, $group_ids);
+
+            if($register){
+                if($group_id == 3){
+                    $this->load->model('status_model');
+                    $status = array(
+                        'client_id' => $register,
+                        'is_information' => 0,
+                        'is_company' => 0,
+                        'is_product' => 0
+                    );
+                    $this->status_model->insert('status', $status);
+                }
+            }
+
             $this->session->set_flashdata('message',$this->ion_auth->messages());
-            redirect('admin/users','refresh');
+            redirect('admin/users/index/' . $group_id,'refresh');
         }
     }
 
@@ -73,12 +91,13 @@ class Users extends Admin_Controller
         $this->form_validation->set_rules('first_name','First name','trim');
         $this->form_validation->set_rules('last_name','Last name','trim');
         $this->form_validation->set_rules('company','Company','trim');
+        $this->form_validation->set_rules('position','Position','trim');
         $this->form_validation->set_rules('phone','Phone','trim');
         $this->form_validation->set_rules('username','Username','trim|required');
         $this->form_validation->set_rules('email','Email','trim|required|valid_email');
         $this->form_validation->set_rules('password','Password','min_length[6]');
         $this->form_validation->set_rules('password_confirm','Password confirmation','matches[password]');
-        $this->form_validation->set_rules('groups[]','Groups','required|integer');
+//        $this->form_validation->set_rules('groups[]','Groups','required|integer');
         $this->form_validation->set_rules('user_id','User ID','trim|integer|required');
 
         if($this->form_validation->run() === FALSE) {
@@ -112,13 +131,13 @@ class Users extends Admin_Controller
             $this->ion_auth->update($user_id, $new_data);
 
             //Update the groups user belongs to
-            $groups = $this->input->post('groups');
-            if (isset($groups) && !empty($groups)) {
-                $this->ion_auth->remove_from_group('', $user_id);
-                foreach ($groups as $group) {
-                    $this->ion_auth->add_to_group($group, $user_id);
-                }
-            }
+//            $groups = $this->input->post('groups');
+//            if (isset($groups) && !empty($groups)) {
+//                $this->ion_auth->remove_from_group('', $user_id);
+//                foreach ($groups as $group) {
+//                    $this->ion_auth->add_to_group($group, $user_id);
+//                }
+//            }
 
             $this->session->set_flashdata('message',$this->ion_auth->messages());
             redirect('admin/users','refresh');

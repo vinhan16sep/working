@@ -15,10 +15,8 @@ class Company extends Admin_Controller{
 	}
 
 	public function index(){
-		// $this->output->enable_profiler(TRUE);
 		$this->load->model('users_model');
 		$members = $this->users_model->fetch_all_member();
-		// print_r($members);die;
 		$this->data['members'] = $members;
 		$keywords = '';
         if($this->input->get('search')){
@@ -47,7 +45,6 @@ class Company extends Admin_Controller{
             $result = $this->information_model->fetch_all_company_pagination_search($per_page, $this->data['page'], $keywords);
         }
         $this->data['companies'] = $result;
-        // print_r($result);die;
 
 		$this->render('admin/company/list_company_view');
 	}
@@ -150,6 +147,80 @@ class Company extends Admin_Controller{
         $this->excel->getActiveSheet()->fromArray($data_export);
 
         $filename='Danh_sach_doanh_nghiep_' . date("d-m-Y") . '.xls'; //save our workbook as this file name
+
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+
+        header('Cache-Control: max-age=0'); //no cache
+
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
+    }
+
+    public function export_product(){
+        //activate worksheet number 1
+        $this->excel->setActiveSheetIndex(0);
+        //name the worksheet
+        $this->excel->getActiveSheet()->setTitle('Danh sach san pham');
+
+        // load database
+        $this->load->database();
+
+        // get all users in array formate
+        $data = $this->information_model->get_all_product_for_export('product');
+        $data_export = array(
+            '0' => array(
+                'company' => 'Doanh nghiệp',
+                'name' => 'Tên SP/dịch vụ/giải pháp/ứng dụng',
+                'service' => 'Đăng ký tham gia lĩnh vực',
+                'functional' => 'Mô tả các công năng của sản phẩm',
+                'process' => 'Các công nghệ và quy trình chất lượng sử dụng để phát triển sản phẩm',
+                'security' => 'Bảo mật của sản phẩm',
+                'positive' => 'Các ưu điểm nổi trội của SP/GP/DV',
+                'compare' => 'So sánh với các SP/GP/DV khác',
+                'income' => 'Doanh thu của SP/GP/DV năm 2016, 2017',
+                'area' => 'Thị phần của SP/giải pháp/DV',
+                'open_date' => 'Ngày thương mại hoá/ra mắt dịch vụ',
+                'price' => 'Giá SP/GP/DV',
+                'customer' => '1 số khách hàng tiêu biểu',
+                'after_sale' => 'Dịch vụ sau bán hàng',
+                'team' => 'Đội ngũ phát triển sp/gp (bao nhiêu người, trình độ, trong bao lâu...)',
+                'award' => 'Các giải thưởng/DH đã nhận được'
+            )
+        );
+
+        foreach($data as $key => $extra_info){
+            $data_export[$key + 1] = array(
+                'company' => $extra_info['company'],
+                'name' => $extra_info['name'],
+                'service' => $extra_info['service'],
+                'functional' => $extra_info['functional'],
+                'process' => $extra_info['process'],
+                'security' => $extra_info['security'],
+                'positive' => $extra_info['positive'],
+                'compare' => $extra_info['compare'],
+                'income' => $extra_info['income'],
+                'area' => $extra_info['area'],
+                'open_date' => $extra_info['open_date'],
+                'price' => $extra_info['price'],
+                'customer' => $extra_info['customer'],
+                'after_sale' => $extra_info['after_sale'],
+                'team' => $extra_info['team'],
+                'award' => $extra_info['award']
+            );
+        }
+
+
+        // read data to active sheet
+        $this->excel->getActiveSheet()->fromArray($data_export);
+
+        $filename='Danh_sach_san_pham_' . date("d-m-Y") . '.xls'; //save our workbook as this file name
 
         header('Content-Type: application/vnd.ms-excel'); //mime type
 

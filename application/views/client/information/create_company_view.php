@@ -1,5 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
+<style>
+    .error{
+        color: red;
+    }
+</style>
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content">
         <div class="row modified-mode">
@@ -8,7 +12,7 @@
                     <h1 style="text-align:center;">THÔNG TIN DOANH NGHIỆP</h1>
                 </div>
                 <?php
-                echo form_open_multipart('', array('class' => 'form-horizontal'));
+                echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'company-form'));
                 ?>
                 <div class="form-group">
                     <div class="row">
@@ -18,17 +22,27 @@
                             ?>
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
+                            <div class="row">
                             <?php
                             echo form_label('Năm 2015', 'equity_2015');
                             echo form_error('equity_2015');
                             echo form_input('equity_2015', set_value('equity_2015'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
                             echo form_label('Năm 2016', 'equity_2015');
                             echo form_error('equity_2016');
                             echo form_input('equity_2016', set_value('equity_2016'), 'class="form-control"');
+                            ?>
+                            </div>
+                            <div class="row">
+                            <?php
                             echo form_label('Năm 2017', 'equity_2015');
                             echo form_error('equity_2017');
                             echo form_input('equity_2017', set_value('equity_2017'), 'class="form-control"');
                             ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -287,4 +301,89 @@
             $('.submit-extra-form').hide();
         }
     }
+
+    $('#company-form').validate({
+        rules: {
+            equity_2015: {
+                required: true
+            },
+            equity_2016: {
+                required: true
+            },
+            equity_2017: {
+                required: true
+            },
+            owner_equity: {
+                required: true
+            },
+            total_income: {
+                required: true
+            },
+            software_income: {
+                required: true
+            },
+            it_income: {
+                required: true
+            },
+            export_income: {
+                required: true
+            },
+            total_labor: {
+                required: true
+            },
+            total_ltv: {
+                required: true
+            },
+            description: {
+                required: true
+            },
+            main_market: {
+                required: true
+            },
+            main_service: {
+                required: true
+            }
+        },
+        messages :{
+            equity_2015: {
+                required : 'Cần nhập Vốn điều lệ 2015'
+            },
+            equity_2016: {
+                required: 'Cần nhập Vốn điều lệ 2016'
+            },
+            equity_2017: {
+                required: 'Cần nhập Vốn điều lệ 2017'
+            },
+            owner_equity: {
+                required: 'Cần nhập Vốn chủ sở hữu'
+            },
+            total_income: {
+                required: 'Cần nhập Tổng doanh thu DN'
+            },
+            software_income: {
+                required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
+            },
+            it_income: {
+                required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
+            },
+            export_income: {
+                required: 'Cần nhập Tổng DT xuất khẩu'
+            },
+            total_labor: {
+                required: 'Cần nhập Tổng số lao động của DN'
+            },
+            total_ltv: {
+                required: 'Cần nhập Tổng số LTV'
+            },
+            description: {
+                required: 'Cần nhập Giới thiệu chung'
+            },
+            main_market: {
+                required: 'Cần nhập Thị trường chính'
+            },
+            main_service: {
+                required: 'Cần nhập SP dịch vụ chính của DN'
+            }
+        }
+    });
 </script>

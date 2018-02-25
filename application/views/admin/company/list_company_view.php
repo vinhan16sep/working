@@ -1,7 +1,8 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
-        <h3>Danh sách doanh nghiệp</h3><a type="button" href="<?php echo site_url('admin/company/export'); ?>" class="btn btn-success">EXPORT DATA</a>
+        <h3>Danh sách doanh nghiệp</h3><a type="button" href="<?php echo site_url('admin/company/export'); ?>" class="btn btn-success">EXPORT DATA DOANH NGHIỆP</a>
+        <a type="button" href="<?php echo site_url('admin/company/export_product'); ?>" class="btn btn-success">EXPORT DATA SẢN PHẨM</a>
     </div>
 
     <section class="content">
@@ -37,8 +38,8 @@
                                             </select>
                                         </td>
                                         <td style="text-align: center;">
-                                            <a href="<?php echo base_url('admin/company/detail/' . $value['id']) ?>" class="btn btn-info">Xem chi tiết</a>
-                                            <a href="<?php echo base_url('admin/product/index/' . $value['client_id']) ?>" class="btn btn-info">Sản phẩm</a>
+                                            <a href="<?php echo base_url('admin/company/detail/' . $value['id']) ?>" class="btn btn-info">Thông tin DN</a>
+                                            <a href="<?php echo base_url('admin/product/index/' . $value['client_id']) ?>" class="btn btn-info">Thông tin SP/DV</a>
                                             
                                             
                                         </td>

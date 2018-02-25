@@ -2,7 +2,7 @@
 
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content row">
-        <a type="button" href="<?php echo site_url('admin/users/create'); ?>" class="btn btn-primary">THÊM MỚI</a>
+        <a type="button" href="<?php echo site_url('admin/users/create/' . $group); ?>" class="btn btn-primary">THÊM MỚI</a>
         <div class="container col-md-12">
             <div>
                 <span><?php echo $this->session->flashdata('message'); ?></span>
@@ -16,7 +16,9 @@
                                 <td><b><a href="#">Họ tên</a></b></td>
                                 <td><b><a href="#">Doanh nghiệp</a></b></td>
                                 <td><b><a href="#">Điện thoại</a></b></td>
-                                <td><b><a href="#">Email</a></b></td>
+                                <td><b><a href="#">T/t đăng ký</a></b></td>
+                                <td><b><a href="#">T/t doanh nghiệp</a></b></td>
+                                <td><b><a href="#">T/t sản phẩm</a></b></td>
                                 <?php if ($this->uri->segment(4) == 2): ?>
                                 <td><b><a href="#">DN được chỉ định</a></b></td>
                                 <?php elseif($this->uri->segment(4) == 3): ?>
@@ -32,6 +34,8 @@
                                     <td><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></td>
                                     <td><a href="<?php echo base_url('admin/company/detail_by_client/' . $user['id']) ?>"><?php echo $user['company']; ?></a></td>
                                     <td><?php echo $user['phone']; ?></td>
+                                    <td><?php echo $user['email']; ?></td>
+                                    <td><?php echo $user['email']; ?></td>
                                     <td><?php echo $user['email']; ?></td>
                                     <td>
                                         <?php if ($this->uri->segment(4) == 2): ?>

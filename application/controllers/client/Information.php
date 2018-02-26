@@ -363,7 +363,7 @@ class Information extends Client_Controller {
         } else {
             if ($this->input->post()) {
                 $service = json_encode($this->input->post('service'));
-                $image = $this->upload_image('certificate', $_FILES['certificate']['name'], 'assets/upload/product', 'assets/upload/product/thumbs');
+                // $image = $this->upload_image('certificate', $_FILES['certificate']['name'], 'assets/upload/product', 'assets/upload/product/thumbs');
                 $data = array(
                     'client_id' => $this->data['user']->id,
                     'name' => $this->input->post('name'),
@@ -382,7 +382,6 @@ class Information extends Client_Controller {
                     'team' => $this->input->post('team'),
                     'award' => $this->input->post('award'),
                     'certificate' => $this->input->post('certificate'),
-                    'certificate' => $image,
                     'is_submit' => 1,
                     'created_at' => $this->author_info['created_at'],
                     'created_by' => $this->author_info['created_by'],
@@ -395,6 +394,71 @@ class Information extends Client_Controller {
                     $this->session->set_flashdata('message', 'There was an error inserting item');
                 }
                 $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('client/information/products', 'refresh');
+            }
+        }
+    }
+
+    public function edit_product($request_id = NULL) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('name', 'Data', 'trim|required');
+        // $this->form_validation->set_rules('service', 'Data', 'trim|required');
+        $this->form_validation->set_rules('functional', 'Data', 'trim|required');
+        $this->form_validation->set_rules('process', 'Data', 'trim|required');
+        $this->form_validation->set_rules('security', 'Data', 'trim|required');
+        $this->form_validation->set_rules('positive', 'Data', 'trim|required');
+        $this->form_validation->set_rules('compare', 'Data', 'trim|required');
+        $this->form_validation->set_rules('income', 'Data', 'trim|required|numeric');
+        $this->form_validation->set_rules('area', 'Data', 'trim|required');
+        $this->form_validation->set_rules('open_date', 'Data', 'trim|required');
+        $this->form_validation->set_rules('price', 'Data', 'trim|required|numeric');
+        $this->form_validation->set_rules('customer', 'Data', 'trim|required');
+        $this->form_validation->set_rules('after_sale', 'Data', 'trim|required');
+        $this->form_validation->set_rules('team', 'Data', 'trim|required');
+        $this->form_validation->set_rules('award', 'Data', 'trim|required');
+
+        $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['product'] = $this->information_model->fetch_product_by_user_id('product', $this->data['user']->id, $id);
+            if (!$this->data['product']) {
+                redirect('client/information/product', 'refresh');
+            }
+            $this->render('client/information/edit_product_view');
+        } else {
+            if ($this->input->post()) {
+                $service = json_encode($this->input->post('service'));
+
+                $data = array(
+                    'name' => $this->input->post('name'),
+                    'service' => $service,
+                    'functional' => $this->input->post('functional'),
+                    'process' => $this->input->post('process'),
+                    'security' => $this->input->post('security'),
+                    'positive' => $this->input->post('positive'),
+                    'compare' => $this->input->post('compare'),
+                    'income' => $this->input->post('income'),
+                    'area' => $this->input->post('area'),
+                    'open_date' => $this->input->post('open_date'),
+                    'price' => $this->input->post('price'),
+                    'customer' => $this->input->post('customer'),
+                    'after_sale' => $this->input->post('after_sale'),
+                    'team' => $this->input->post('team'),
+                    'award' => $this->input->post('award'),
+                    'certificate' => $this->input->post('certificate'),
+                    'is_submit' => 1,
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                try {
+                    $this->information_model->update_product('product', $this->data['user']->id, $id, $data);
+                    $this->session->set_flashdata('message', 'Item updated successfully');
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
+                }
 
                 redirect('client/information/products', 'refresh');
             }

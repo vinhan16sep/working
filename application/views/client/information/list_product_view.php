@@ -39,6 +39,7 @@
                                     echo '<td><b>STT</b></td>';
                                     echo '<td><b>Tên SP/dịch vụ/giải pháp/ứng dụng</b></td>';
                                     echo '<td><b style="text-align: center !important;">Kết quả đánh giá</b></td>';
+                                    echo '<td><b style="text-align: center !important;">Thao tác</b></td>';
                                     echo '</tr>';
                                     if (!empty($products)) {
                                         foreach ($products as $key => $product):
@@ -57,6 +58,7 @@
                                                     <td style="text-align: center;width:110px;"><a style="width:132px;" href="<?php echo base_url('client/information/detail_product/' . $product['id']) ?>" class="btn btn-danger">Không đồng ý</a></td>
                                                 <?php endif; ?>
                                             <?php endif; ?>
+                                            <td style="text-align: center;width:110px;"><a style="width:132px;" href="<?php echo base_url('client/information/edit_product/' . $product['id']) ?>" class="btn btn-success">Chỉnh sửa</a></td>
                                     <?php
                                             echo '</tr>';
                                         endforeach;

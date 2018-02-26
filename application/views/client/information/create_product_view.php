@@ -38,21 +38,59 @@
                         </div>
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
-                            $options = array(
-                                '' => '-- Chọn một dịch vụ --',
+                            $options_1 = array(
                                 'Chính phủ điện tử' => 'Chính phủ điện tử',
-                                'Ngành y tế' => 'Ngành y tế',
-                                'Ngành giáo dục' => 'Ngành giáo dục',
-                                'Giao thông' => 'Giao thông',
-                                'Xây dựng' => 'Xây dựng',
-                                'Các lĩnh vực sản xuất/dịch vụ cho DN' => 'Các lĩnh vực sản xuất/dịch vụ cho DN',
-                                'Nội dung số và giải trí điện tử' => 'Nội dung số và giải trí điện tử',
+                                'Quản lý doanh nghiệp' => 'Quản lý doanh nghiệp',
+                                'Kế toán, tài chính, ngân hàng' => 'Kế toán, tài chính, ngân hàng',
+                                'Quản lý bán hàng và chuỗi cung ứng' => 'Quản lý bán hàng và chuỗi cung ứng',
+                                'Giáo dục, đào tạo' => 'Giáo dục, đào tạo',
+                                'Giao thông vận tải' => 'Giao thông vận tải',
+                                'Y tế, chăm sóc sức khỏe và làm đẹp' => 'Y tế, chăm sóc sức khỏe và làm đẹp',
+                                'Nông nghiệp và chế biến thực phẩm' => 'Nông nghiệp và chế biến thực phẩm',
+                                'Du lịch, quản lý nhà hàng/khách sạn' => 'Du lịch, quản lý nhà hàng/khách sạn',
+                                'Công tác nhân sự, văn phòng' => 'Công tác nhân sự, văn phòng',
                                 'Viễn thông' => 'Viễn thông',
-                                'Bảo mật an toàn thông tin' => 'Bảo mật an toàn thông tin',
-                                'Tư vấn' => 'Tư vấn'
+                                'Nền tảng và Công cụ ứng dụng' => 'Nền tảng và Công cụ ứng dụng',
+                                'Thanh toán điện tử' => 'Thanh toán điện tử ',
+                                'Thương mại điện tử' => 'Thương mại điện tử',
+                                'Giải trí điện tử' => 'Giải trí điện tử',
+                                'Bảo mật và an toàn thông tin' => 'Bảo mật và an toàn thông tin',
+                                'Bảo vệ môi trường và phát triển bền vững' => 'Bảo vệ môi trường và phát triển bền vững',
+                                'Các lĩnh vực khác' => 'Các lĩnh vực khác'
                             );
+                            $options_4 = array(
+                                'Gia công xuất khẩu phần mềm' => 'Gia công xuất khẩu phần mềm',
+                                'BPO' => 'BPO',
+                                'Data Center' => 'Data Center',
+                                'Đào tạo CNTT' => 'Đào tạo CNTT',
+                                'Nội dung số' => 'Nội dung số',
+                                'Điện toán đám mây và Big Data' => 'Điện toán đám mây và Big Data',
+                                'An toàn thông tin' => 'An toàn thông tin',
+                                'Các lĩnh vực khác' => 'Các lĩnh vực khác'
+                            );
+                            echo form_checkbox('group_1', '', false, 'class="btn-group-1"');
+                            echo '<span style="color:blue">Các sản phẩm, giải pháp phần mềm tiêu biểu, được bình xét theo 18 lĩnh vực ứng dụng chuyên ngành</span><br>';
+                            echo "<div class='row group-1' style='display:none; margin-left: 20px'>";
+                            foreach ($options_1 as $key => $value) {
+                                echo form_checkbox('service[]', $value, false, 'class="btn-checkbox"');
+                                echo $key.'<br>';
+                            }
+                            echo "</div>";
+                            echo form_checkbox('service[]', 'Các sản phẩm, giải pháp ứng dụng công nghệ 4.0', false, 'class="btn-checkbox"');
+                            echo '<span style="color:blue">Các sản phẩm, giải pháp ứng dụng công nghệ 4.0</span><br>';
 
-                            echo form_dropdown('service', $options, '', 'class="form-control"');
+                            echo form_checkbox('service[]', 'Các sản phẩm, giải pháp phần mềm mới', false, 'class="btn-checkbox"');
+                            echo '<span style="color:blue">Các sản phẩm, giải pháp phần mềm mới</span><br>';
+
+                            echo form_checkbox('group_4', '', false, 'class="btn-group-4"');
+                            echo '<span style="color:blue">Các dịch vụ CNTT</span><br>';
+
+                            echo "<div class='row group-4' style='display:none; margin-left: 20px'>";
+                            foreach ($options_4 as $key => $value) {
+                                echo form_checkbox('service[]', $value, false, 'class="btn-checkbox"');
+                                echo $key.'<br>';
+                            }
+                            echo "</div>";
 
                             ?>
                         </div>
@@ -323,9 +361,10 @@
                         <div class="col-sm-9 col-md-9 col-sx-12">
                             <?php
                             echo form_error('certificate');
-                            echo form_upload('certificate', set_value('certificate'), 'class="form-control"');
+                            echo form_input('certificate', set_value('certificate'), 'class="form-control"');
                             ?>
                         </div>
+                        <p style="color:red;">Chú ý: Nếu đã có GCN bản quyền thì đặt link vào ô trên, nếu chưa có thì tải mẫu Cam kết bản quyền tại đây và đặt link vào ô trên.</p>
                     </div>
                 </div>
                 <br>
@@ -364,6 +403,23 @@
     }else{
         $('.submit-extra-form').hide();
     };
+
+    $('.btn-group-1').click(function(){
+        if($(this).prop("checked") == true){
+            $('.group-1').slideDown();
+        }else{
+            $('.group-1').slideUp();
+        }
+        
+    })
+    $('.btn-group-4').click(function(){
+        if($(this).prop("checked") == true){
+            $('.group-4').slideDown();
+        }else{
+            $('.group-4').slideUp();
+        }
+        
+    })
 
     function make_sure(){
         if($('input[name="is_submit"]').is(':checked') === true){

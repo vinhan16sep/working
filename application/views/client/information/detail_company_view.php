@@ -136,7 +136,8 @@
                             <?php if(!$submitted || $submitted['is_submit'] != 1): ?>
                                 <a href="<?php echo base_url('client/information/create_company'); ?>" class="btn btn-primary btn-block"><b>Chỉnh sửa thông tin</b></a>
                             <?php else: ?>
-                                <a href="javascript:void(0);" class="btn btn-danger btn-block" disabled><b>Thông tin đã đăng ký</b></a>
+                                <a href="<?php echo base_url('client/information/edit_company'); ?>" class="btn btn-primary btn-block"><b>Sửa thông tin</b></a>
+<!--                                <a href="javascript:void(0);" class="btn btn-danger btn-block" disabled><b>Thông tin đã đăng ký</b></a>-->
                             <?php endif; ?>
                         </div>
                     </div>

@@ -379,22 +379,22 @@
                     </div>
                 </div>
                 <br>
-                <div class="form-group make-sure">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <p style="color:red;">Chú ý: thông tin đã nhập ở trên sẽ không thể thay đổi sau khi gửi đi.
-                                <a class="btn btn-default cancel pull-right" href="javascript:window.history.go(-1);">Quay lại</a></p>
-                            <?php
-                            echo form_error('link');
-                            $js = 'onClick="make_sure()"';
-                            echo form_label(form_checkbox('is_submit', '', FALSE, $js.'class="is_submit"') . ' Tôi đã chắc chắn về thông tin bên trên.');
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-sm-12 text-right submit-extra-form" style="display:none;">
+<!--                <div class="form-group make-sure">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-sm-3 col-md-3 col-sx-12">-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-9 col-md-9 col-sx-12">-->
+<!--                            <p style="color:red;">Chú ý: thông tin đã nhập ở trên sẽ không thể thay đổi sau khi gửi đi.-->
+<!--                                <a class="btn btn-default cancel pull-right" href="javascript:window.history.go(-1);">Quay lại</a></p>-->
+<!--                            --><?php
+//                            echo form_error('link');
+//                            $js = 'onClick="make_sure()"';
+//                            echo form_label(form_checkbox('is_submit', '', FALSE, $js.'class="is_submit"') . ' Tôi đã chắc chắn về thông tin bên trên.');
+//                            ?>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="form-group col-sm-12 text-right submit-extra-form">
                     <div class="col-sm-3 col-md-3 col-sx-12">
                     </div>
                     <div class="col-sm-9 col-md-9 col-sx-12">
@@ -410,19 +410,19 @@
 </div>
 <script>
     var base_url = location.protocol + "//" + location.host + (location.port ? ':' + location.port : '')+'/working';
-    if($('input[name="is_submit"]').is(':checked') === true){
-        $('.submit-extra-form').show();
-    }else{
-        $('.submit-extra-form').hide();
-    };
-
-    function make_sure(){
-        if($('input[name="is_submit"]').is(':checked') === true){
-            $('.submit-extra-form').show();
-        }else{
-            $('.submit-extra-form').hide();
-        }
-    }
+//    if($('input[name="is_submit"]').is(':checked') === true){
+//        $('.submit-extra-form').show();
+//    }else{
+//        $('.submit-extra-form').hide();
+//    };
+//
+//    function make_sure(){
+//        if($('input[name="is_submit"]').is(':checked') === true){
+//            $('.submit-extra-form').show();
+//        }else{
+//            $('.submit-extra-form').hide();
+//        }
+//    }
 
     $('#company-form').validate({
         rules: {

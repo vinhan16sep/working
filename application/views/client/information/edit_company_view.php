@@ -391,7 +391,7 @@
                                         echo form_checkbox('main_market[]', $value, (in_array($value, $main_market, '')? true : false), 'class="btn-checkbox"');
                                         echo $key.'<br>';
                                     }
-                                    if($check){
+                                    if($new_check[0] != ''){
                                         echo form_checkbox('main_market[]', '', true, 'class="btn-checkbox" id="anonymous"');
                                         echo 'Xuất khẩu mục tiêu - Khác (nêu rõ)<br>';
                                     }else{
@@ -400,7 +400,7 @@
                                     }
                                     
                                 ?>
-                                <?php if ($check): ?>
+                                <?php if ($new_check[0] != ''): ?>
                                     <input type="text" name="anonymous" class="input-anonymous form-control" style="display: block;" value="<?php echo $new_check[0] ?>">
                                 <?php else: ?>
                                     <input type="text" name="anonymous" class="input-anonymous form-control" style="display: none;">
@@ -411,22 +411,22 @@
                     </div>
                 </div>
                 <br>
-                <div class="form-group make-sure">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-sx-12">
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-sx-12">
-                            <p style="color:red;">Chú ý: thông tin đã nhập ở trên sẽ không thể thay đổi sau khi gửi đi.
-                                <a class="btn btn-default cancel pull-right" href="javascript:window.history.go(-1);">Quay lại</a></p>
-                            <?php
-                            echo form_error('link');
-                            $js = 'onClick="make_sure()"';
-                            echo form_label(form_checkbox('is_submit', '', FALSE, $js.'class="is_submit"') . ' Tôi đã chắc chắn về thông tin bên trên.');
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-sm-12 text-right submit-extra-form" style="display:none;">
+<!--                <div class="form-group make-sure">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-sm-3 col-md-3 col-sx-12">-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-9 col-md-9 col-sx-12">-->
+<!--                            <p style="color:red;">Chú ý: thông tin đã nhập ở trên sẽ không thể thay đổi sau khi gửi đi.-->
+<!--                                <a class="btn btn-default cancel pull-right" href="javascript:window.history.go(-1);">Quay lại</a></p>-->
+<!--                            --><?php
+//                            echo form_error('link');
+//                            $js = 'onClick="make_sure()"';
+//                            echo form_label(form_checkbox('is_submit', '', FALSE, $js.'class="is_submit"') . ' Tôi đã chắc chắn về thông tin bên trên.');
+//                            ?>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="form-group col-sm-12 text-right submit-extra-form">
                     <div class="col-sm-3 col-md-3 col-sx-12">
                     </div>
                     <div class="col-sm-9 col-md-9 col-sx-12">
@@ -442,19 +442,19 @@
 </div>
 <script>
     var base_url = location.protocol + "//" + location.host + (location.port ? ':' + location.port : '')+'/working';
-    if($('input[name="is_submit"]').is(':checked') === true){
-        $('.submit-extra-form').show();
-    }else{
-        $('.submit-extra-form').hide();
-    };
-
-    function make_sure(){
-        if($('input[name="is_submit"]').is(':checked') === true){
-            $('.submit-extra-form').show();
-        }else{
-            $('.submit-extra-form').hide();
-        }
-    }
+//    if($('input[name="is_submit"]').is(':checked') === true){
+//        $('.submit-extra-form').show();
+//    }else{
+//        $('.submit-extra-form').hide();
+//    };
+//
+//    function make_sure(){
+//        if($('input[name="is_submit"]').is(':checked') === true){
+//            $('.submit-extra-form').show();
+//        }else{
+//            $('.submit-extra-form').hide();
+//        }
+//    }
 
     $('#company-form').validate({
         rules: {
@@ -467,25 +467,67 @@
             equity_2017: {
                 required: true
             },
-            owner_equity: {
+            owner_equity_2015: {
                 required: true
             },
-            total_income: {
+            owner_equity_2016: {
                 required: true
             },
-            software_income: {
+            owner_equity_2017: {
                 required: true
             },
-            it_income: {
+            total_income_2015: {
                 required: true
             },
-            export_income: {
+            total_income_2017: {
                 required: true
             },
-            total_labor: {
+            total_income_2016: {
                 required: true
             },
-            total_ltv: {
+            software_income_2015: {
+                required: true
+            },
+            software_income_2016: {
+                required: true
+            },
+            software_income_2017: {
+                required: true
+            },
+            it_income_2015: {
+                required: true
+            },
+            it_income_2016: {
+                required: true
+            },
+            it_income_2017: {
+                required: true
+            },
+            export_income_2015: {
+                required: true
+            },
+            export_income_2016: {
+                required: true
+            },
+            export_income_2017: {
+                required: true
+            },
+            total_labor_2015: {
+                required: true
+            },
+            total_labor_2016: {
+                required: true
+            },
+            total_labor_2017: {
+                required: true
+            },
+            total_ltv_2015: {
+                required: true
+            },
+            total_ltv_2016: {
+                required: true
+            },
+            total_ltv_2017: {
                 required: true
             },
             description: {
@@ -508,25 +550,67 @@
             equity_2017: {
                 required: 'Cần nhập Vốn điều lệ 2017'
             },
-            owner_equity: {
+            owner_equity_2015: {
                 required: 'Cần nhập Vốn chủ sở hữu'
             },
-            total_income: {
+            owner_equity_2016: {
+                required: 'Cần nhập Vốn chủ sở hữu'
+            },
+            owner_equity_2017: {
+                required: 'Cần nhập Vốn chủ sở hữu'
+            },
+            total_income_2015: {
                 required: 'Cần nhập Tổng doanh thu DN'
             },
-            software_income: {
+            total_income_2016: {
+                required: 'Cần nhập Tổng doanh thu DN'
+            },
+            total_income_2017: {
+                required: 'Cần nhập Tổng doanh thu DN'
+            },
+            software_income_2015: {
                 required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
             },
-            it_income: {
+            software_income_2016: {
+                required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
+            },
+            software_income_2017: {
+                required: 'Cần nhập Tổng DT lĩnh vực sx phần mềm'
+            },
+            it_income_2015: {
                 required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
             },
-            export_income: {
+            it_income_2016: {
+                required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
+            },
+            it_income_2017: {
+                required: 'Cần nhập Tổng doanh thu dịch vụ CNTT'
+            },
+            export_income_2015: {
                 required: 'Cần nhập Tổng DT xuất khẩu'
             },
-            total_labor: {
+            export_income_2016: {
+                required: 'Cần nhập Tổng DT xuất khẩu'
+            },
+            export_income_2017: {
+                required: 'Cần nhập Tổng DT xuất khẩu'
+            },
+            total_labor_2015: {
                 required: 'Cần nhập Tổng số lao động của DN'
             },
-            total_ltv: {
+            total_labor_2016: {
+                required: 'Cần nhập Tổng số lao động của DN'
+            },
+            total_labor_2017: {
+                required: 'Cần nhập Tổng số lao động của DN'
+            },
+            total_ltv_2015: {
+                required: 'Cần nhập Tổng số LTV'
+            },
+            total_ltv_2016: {
+                required: 'Cần nhập Tổng số LTV'
+            },
+            total_ltv_2017: {
                 required: 'Cần nhập Tổng số LTV'
             },
             description: {

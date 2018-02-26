@@ -89,16 +89,18 @@
                         </div>
                         <div class="post">
                             <h4>Thông tin doanh nghiệp</h4>
-                            <?php if(!$company_submitted || $company_submitted['is_submit'] == 0): ?>
+                            <?php if(!$company_submitted): ?>
                                 <p style="color:red;">Doanh nghiệp cần điền đầy đủ thông tin đăng ký</p>
                                 <span>
                                     <a href="<?php echo base_url('client/information/create_company') ?>" class="btn btn-primary btn-block"><b>Chỉnh sửa</b></a>
                                 </span>
                             <?php else: ?>
-                                <p style="color:green;">Doanh nghiệp đã gửi thông tin đăng ký</p>
-                                <span>
-                                    <a href="<?php echo base_url('client/information/company') ?>" class="btn btn-success btn-block"><b>Xem thông tin đã đăng ký</b></a>
-                                </span>
+                                <a href="<?php echo base_url('client/information/company') ?>" class="btn btn-success btn-block"><b>Xem thông tin đã đăng ký</b></a>
+                                <a href="<?php echo base_url('client/information/edit_company'); ?>" class="btn btn-primary btn-block"><b>Sửa thông tin</b></a>
+<!--                                <p style="color:green;">Doanh nghiệp đã gửi thông tin đăng ký</p>-->
+<!--                                <span>-->
+<!--                                    <a href="--><?php //echo base_url('client/information/company') ?><!--" class="btn btn-success btn-block"><b>Xem thông tin đã đăng ký</b></a>-->
+<!--                                </span>-->
                             <?php endif; ?>
                         </div>
                         <div class="post">

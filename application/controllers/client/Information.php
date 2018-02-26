@@ -207,7 +207,7 @@ class Information extends Client_Controller {
                     'description' => $this->input->post('description'),
                     'main_service' => $main_service,
                     'main_market' => $main_market,
-                    'is_submit' => 1,
+//                    'is_submit' => 1,
                     'created_at' => $this->author_info['created_at'],
                     'created_by' => $this->author_info['created_by'],
                     'modified_at' => $this->author_info['modified_at'],
@@ -259,35 +259,55 @@ class Information extends Client_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->data['company'] = $this->information_model->fetch_by_user_id('company', $this->data['user']->id);
             if (!$this->data['company']) {
-                redirect('client/information', 'refresh');
+                redirect('client/information/company', 'refresh');
             }
 
             $this->render('client/information/edit_company_view');
         } else {
             if ($this->input->post()) {
+                $main_service = json_encode($this->input->post('main_service'));
+                $main_market = json_encode($this->input->post('main_market'));
+
                 $data = array(
-                    'website' => $this->input->post('website'),
-                    'legal_representative' => $this->input->post('legal_representative'),
-                    'lp_position' => $this->input->post('lp_position'),
-                    'lp_email' => $this->input->post('lp_email'),
-                    'lp_phone' => $this->input->post('lp_phone'),
-                    'connector' => $this->input->post('connector'),
-                    'c_position' => $this->input->post('c_position'),
-                    'c_email' => $this->input->post('c_email'),
-                    'c_phone' => $this->input->post('c_phone'),
-                    'link' => $this->input->post('link'),
+                    'equity_2015' => $this->input->post('equity_2015'),
+                    'equity_2016' => $this->input->post('equity_2016'),
+                    'equity_2017' => $this->input->post('equity_2017'),
+                    'owner_equity_2015' => $this->input->post('owner_equity_2015'),
+                    'owner_equity_2016' => $this->input->post('owner_equity_2016'),
+                    'owner_equity_2017' => $this->input->post('owner_equity_2017'),
+                    'total_income_2015' => $this->input->post('total_income_2015'),
+                    'total_income_2016' => $this->input->post('total_income_2016'),
+                    'total_income_2017' => $this->input->post('total_income_2017'),
+                    'software_income_2015' => $this->input->post('software_income_2015'),
+                    'software_income_2016' => $this->input->post('software_income_2016'),
+                    'software_income_2017' => $this->input->post('software_income_2017'),
+                    'it_income_2015' => $this->input->post('it_income_2015'),
+                    'it_income_2016' => $this->input->post('it_income_2016'),
+                    'it_income_2017' => $this->input->post('it_income_2017'),
+                    'export_income_2015' => $this->input->post('export_income_2015'),
+                    'export_income_2016' => $this->input->post('export_income_2016'),
+                    'export_income_2017' => $this->input->post('export_income_2017'),
+                    'total_labor_2015' => $this->input->post('total_labor_2015'),
+                    'total_labor_2016' => $this->input->post('total_labor_2016'),
+                    'total_labor_2017' => $this->input->post('total_labor_2017'),
+                    'total_ltv_2015' => $this->input->post('total_ltv_2015'),
+                    'total_ltv_2016' => $this->input->post('total_ltv_2016'),
+                    'total_ltv_2017' => $this->input->post('total_ltv_2017'),
+                    'description' => $this->input->post('description'),
+                    'main_service' => $main_service,
+                    'main_market' => $main_market,
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
 
                 try {
-                    $this->information_model->update('information', $this->data['user']->id, $data);
+                    $this->information_model->update('company', $this->data['user']->id, $data);
                     $this->session->set_flashdata('message', 'Item updated successfully');
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
                 }
 
-                redirect('client/information', 'refresh');
+                redirect('client/information/company', 'refresh');
             }
         }
     }

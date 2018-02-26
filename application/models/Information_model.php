@@ -349,4 +349,32 @@ class Information_model extends CI_Model {
 
         return $query->num_rows();
     }
+
+    public function fetch_product_by_user_id($type, $client_id, $id){
+        $query = $this->db->select('*')
+            ->from($type)
+            ->where('client_id', $client_id)
+            ->where('id', $id)
+            ->limit(1)
+            ->get();
+
+        if($query->num_rows() == 1){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
+    public function update_product($type, $client_id, $id, $information){
+        $this->db->set($information)
+            ->where('client_id', $client_id)
+            ->where('id', $id)
+            ->update($type);
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
 }

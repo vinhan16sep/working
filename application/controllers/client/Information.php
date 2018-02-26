@@ -342,7 +342,7 @@ class Information extends Client_Controller {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('name', 'Data', 'trim|required');
-        $this->form_validation->set_rules('service', 'Data', 'trim|required');
+        // $this->form_validation->set_rules('service', 'Data', 'trim|required');
         $this->form_validation->set_rules('functional', 'Data', 'trim|required');
         $this->form_validation->set_rules('process', 'Data', 'trim|required');
         $this->form_validation->set_rules('security', 'Data', 'trim|required');
@@ -362,11 +362,12 @@ class Information extends Client_Controller {
             $this->render('client/information/create_product_view');
         } else {
             if ($this->input->post()) {
+                $service = json_encode($this->input->post('service'));
                 $image = $this->upload_image('certificate', $_FILES['certificate']['name'], 'assets/upload/product', 'assets/upload/product/thumbs');
                 $data = array(
                     'client_id' => $this->data['user']->id,
                     'name' => $this->input->post('name'),
-                    'service' => $this->input->post('service'),
+                    'service' => $service,
                     'functional' => $this->input->post('functional'),
                     'process' => $this->input->post('process'),
                     'security' => $this->input->post('security'),

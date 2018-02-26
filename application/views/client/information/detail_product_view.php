@@ -29,7 +29,12 @@
                                     <a><i class="fa fa-circle margin-r-5"></i> Tên SP/dịch vụ/giải pháp/ứng dụng</a> <br><p class="" style="padding-left:20px;"><?php echo $product['name']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <a><i class="fa fa-circle margin-r-5"></i> Đăng ký tham gia lĩnh vực</a> <br><p class="" style="padding-left:20px;"><?php echo $product['service']; ?></p>
+                                    <?php $service = json_decode($product['service']) ?>
+                                    <a><i class="fa fa-circle margin-r-5"></i> Đăng ký tham gia lĩnh vực</a> <br>
+                                    <?php foreach ($service as $key => $value): ?>
+                                        <p class="" style="padding-left:20px;"><?php echo $value; ?></p>
+                                    <?php endforeach ?>
+                                    
                                 </li>
                                 <li class="list-group-item">
                                     <a><i class="fa fa-calendar margin-r-5"></i> Ngày thương mại hoá/ra mắt dịch vụ</a> <p class="pull-right"><?php echo $product['open_date']; ?></p>
@@ -76,7 +81,7 @@
                                     <a><i class="fa fa-child margin-r-5"></i> Dịch vụ sau bán hàng</a> <br><p class="" style="padding-left:20px;"><?php echo $product['after_sale']; ?></p>
                                 </li>
                                 <li class="list-group-item">
-                                    <a><i class="fa fa-users margin-r-5"></i> Đội ngũ phát triển sp/gp</a> <br><p class="" style="padding-left:20px;"><?php echo $product['team']; ?></p>
+                                    <a><i class="fa fa-users margin-r-5"></i> Đội ngũ phát triển sản phẩm/giải pháp/dịch vụ (bao nhiêu người, trình độ, trong bao lâu...)</a> <br><p class="" style="padding-left:20px;"><?php echo $product['team']; ?></p>
                                 </li>
                                 <li class="list-group-item">
                                     <a><i class="fa fa-trophy margin-r-5"></i> Các giải thưởng/DH đã nhận được</a> <br><p class="" style="padding-left:20px;"><?php echo $product['award']; ?></p>
